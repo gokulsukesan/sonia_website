@@ -71,15 +71,35 @@
       background: linear-gradient(135deg, rgba(202,162,90,.22), rgba(240,212,154,.10));
     }
 
-    .heroMedia{
-      min-height:220px;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.45)),
-        url("images/hero.jpg");
-      background-size:cover;
-      background-position:center;
+    /* HERO */
+    .hero{
+      padding:22px 0 8px;
+      display:grid; gap:14px;
     }
+    .heroCard{
+      border-radius: calc(var(--r) + 6px);
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(202,162,90,.16), transparent 55%),
+        radial-gradient(800px 450px at 70% 20%, rgba(240,212,154,.10), transparent 60%),
+        var(--panel);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+    }
+    .heroText{padding:18px}
+    .pill{
+      display:inline-flex;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(202,162,90,.30);
+      background: rgba(202,162,90,.10);
+      color: rgba(244,241,232,.92);
+      font-size:13px;
+    }
+    h1{margin:12px 0 8px; font-size:clamp(28px,4.8vw,52px)}
+    .sub{color:rgba(244,241,232,.78); max-width:60ch}
 
+    /* COLLECTION */
     .section{margin-top:20px}
     .grid{
       display:grid;
@@ -93,7 +113,6 @@
       background:#15151c;
       cursor:pointer;
     }
-
     .img{
       width:100%;
       aspect-ratio:4/5;
@@ -105,11 +124,7 @@
       font-weight:750;
       letter-spacing:.2px;
     }
-
-    .img[data-missing="1"]{
-      text-align:center;
-    }
-
+    .img[data-missing="1"]{text-align:center}
     .meta{padding:12px}
     .price{color:var(--gold2); font-weight:850}
 
@@ -140,9 +155,26 @@
 </header>
 
 <main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="heroCard">
+      <div class="heroText">
+        <div class="pill">
+          Custom &amp; Ready-to-Wear • Trusted for 20+ Years • Canada-North York
+        </div>
+        <h1>Luxury garments with timeless elegance.</h1>
+        <p class="sub">
+          Explore signature styles — crafted details, refined silhouettes, and a collection designed to stand out.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTION -->
   <section id="collection" class="section">
     <h2>Collection</h2>
-    <div class="grid" id="grid">
+    <div class="grid">
       <article class="card">
         <img class="img" src="images/p1.jpg" alt="Gold Detail Dress" />
         <div class="meta">
@@ -160,17 +192,18 @@
       </article>
     </div>
   </section>
+
 </main>
 
 <script>
-  // Replace broken images with luxury placeholder
+  // Image fallback
   document.querySelectorAll('img.img').forEach(img => {
     img.addEventListener('error', () => {
-      const placeholder = document.createElement('div');
-      placeholder.className = 'img';
-      placeholder.setAttribute('data-missing','1');
-      placeholder.textContent = 'Image coming soon';
-      img.replaceWith(placeholder);
+      const ph = document.createElement('div');
+      ph.className = 'img';
+      ph.setAttribute('data-missing','1');
+      ph.textContent = 'Image coming soon';
+      img.replaceWith(ph);
     }, { once:true });
   });
 </script>
