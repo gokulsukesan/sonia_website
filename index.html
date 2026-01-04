@@ -6,6 +6,10 @@
   <title>S&amp;S Kurd Legacy | Luxury Garments</title>
   <meta name="description" content="S&S Kurd Legacy — luxury garments. Browse our curated collection." />
   <meta name="theme-color" content="#0b0b0e" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+
 
   <style>
     :root{
@@ -19,6 +23,8 @@
       --border:rgba(202,162,90,.22);
       --shadow: 0 14px 40px rgba(0,0,0,.55);
       --r:18px;
+      --brand-font: 'Cinzel', serif;
+      --brand-gold: #caa25a;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -132,6 +138,29 @@
       nav{display:flex}
       .grid{grid-template-columns:repeat(4,1fr)}
     }
+
+    /* Brand typography */
+    .brand .name,
+    h1,
+    h2 {
+      font-family: var(--brand-font);
+      color: var(--brand-gold);
+      letter-spacing: 0.08em;
+    }
+    
+    /* Optional: luxury feel for navigation */
+    nav a {
+      font-family: var(--brand-font);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    
+    /* Pill accent */
+    .pill {
+      color: var(--gold2);
+      font-family: var(--brand-font);
+    }
+
   </style>
 </head>
 
