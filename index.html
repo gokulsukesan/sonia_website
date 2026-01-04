@@ -194,6 +194,30 @@
       color: var(--gold2);
       font-family: var(--brand-font);
     }
+
+    /* Fullscreen image lightbox */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      cursor: zoom-out;
+    }
+    
+    #lightbox[aria-hidden="false"] {
+      display: flex;
+    }
+    
+    #lightbox img {
+      max-width: 95vw;
+      max-height: 95vh;
+      object-fit: contain;
+      box-shadow: 0 20px 60px rgba(0,0,0,.6);
+      border-radius: 6px;
+    }
   </style>
 </head>
 
@@ -290,19 +314,53 @@
     </div>
   </section>
 </main>
+<!-- Image Lightbox -->
+<div id="lightbox" aria-hidden="true">
+  <img id="lightbox-img" alt="">
+</div>
 
+  
 <script>
-  // Image fallback: replace broken <img> with a clean placeholder
-  document.querySelectorAll('img.img').forEach(img => {
-    img.addEventListener('error', () => {
-      const ph = document.createElement('div');
-      ph.className = 'img';
-      ph.setAttribute('data-missing','1');
-      ph.textContent = 'Image coming soon';
-      img.replaceWith(ph);
-    }, { once:true });
-  });
-</script>
+    // Image fallback
+    document.querySelectorAll('img.img').forEach(img => {
+      img.addEventListener('error', () => {
+        const ph = document.createElement('div');
+        ph.className = 'img';
+        ph.setAttribute('data-missing','1');
+        ph.textContent = 'Image coming soon';
+        img.replaceWith(ph);
+      }, { once:true });
+    });
+  
+    // Lightbox zoom
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+  
+    document.querySelectorAll('.card img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || '';
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+  
+    // Close lightbox on click
+    lightbox.addEventListener('click', () => {
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    });
+  
+    // Close on ESC key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
 
 </body>
 </html>
