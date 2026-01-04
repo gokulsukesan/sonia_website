@@ -3,214 +3,527 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Your Business Name</title>
-  <meta name="description" content="Short, clear description of what your business does." />
-  <meta name="theme-color" content="#0b1220" />
+  <title>S&amp;S Kurd Legacy | Luxury Garments</title>
+  <meta name="description" content="S&S Kurd Legacy — luxury garments. Browse our curated collection." />
+  <meta name="theme-color" content="#0b0b0e" />
+
   <style>
     :root{
-      --bg:#0b1220; --card:#0f1a33; --text:#e8eefc; --muted:#b7c3e6;
-      --accent:#7aa2ff; --accent2:#3be3c3; --border:rgba(255,255,255,.10);
-      --shadow: 0 10px 30px rgba(0,0,0,.30);
-      --radius:16px;
+      --bg:#0b0b0e;
+      --panel:#111116;
+      --panel2:#15151c;
+      --text:#f4f1e8;
+      --muted:#c9c1ae;
+      --gold:#caa25a;
+      --gold2:#f0d49a;
+      --border:rgba(202,162,90,.22);
+      --shadow: 0 14px 40px rgba(0,0,0,.55);
+      --r:18px;
     }
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text); background:
-        radial-gradient(900px 500px at 20% 10%, rgba(122,162,255,.25), transparent 55%),
-        radial-gradient(900px 500px at 90% 20%, rgba(59,227,195,.18), transparent 55%),
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(900px 480px at 20% 10%, rgba(202,162,90,.18), transparent 60%),
+        radial-gradient(800px 460px at 90% 20%, rgba(240,212,154,.10), transparent 60%),
         var(--bg);
+      color:var(--text);
       line-height:1.55;
     }
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:1040px; margin:0 auto; padding:20px}
+    .wrap{max-width:1150px; margin:0 auto; padding:18px}
     .topbar{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding:12px 0;
+      position:sticky; top:0; z-index:30;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,11,14,.86), rgba(11,11,14,.55));
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: var(--shadow);
+    .topbar .inner{
+      max-width:1150px; margin:0 auto; padding:14px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
     }
-    .nav{display:none; gap:16px; color:var(--muted); font-weight:600}
-    .nav a{opacity:.95}
-    .nav a:hover{color:var(--text)}
-    .hero{
-      padding:36px 0 10px;
-      display:grid; gap:18px;
+    .brand{display:flex; align-items:center; gap:12px; min-width:0}
+    .brand img{
+      width:44px; height:44px; border-radius:999px;
+      object-fit:cover; box-shadow: var(--shadow);
+      border:1px solid rgba(202,162,90,.35);
+      background:#000;
     }
-    .pill{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:8px 12px; border:1px solid var(--border); border-radius:999px;
-      color:var(--muted); background:rgba(255,255,255,.04);
-      width:fit-content;
-    }
-    h1{margin:0; font-size:clamp(30px, 5vw, 52px); line-height:1.06}
-    .sub{margin:0; color:var(--muted); font-size:clamp(15px, 2.2vw, 18px); max-width:56ch}
-    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:6px}
+    .brand .txt{min-width:0}
+    .brand .name{font-weight:800; letter-spacing:.3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .brand .tag{color:var(--muted); font-size:13px; margin-top:2px}
+    nav{display:none; gap:18px; color:rgba(244,241,232,.85); font-weight:650}
+    nav a{opacity:.9}
+    nav a:hover{opacity:1; color:var(--gold2)}
     .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 16px; border-radius:12px; border:1px solid var(--border);
-      background:rgba(255,255,255,.06); color:var(--text); font-weight:700;
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+      font-weight:750;
       min-height:44px;
-    }
-    .btn.primary{
-      border:none;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color:#081027;
-      box-shadow: var(--shadow);
+      transition: transform .12s ease, opacity .12s ease;
     }
     .btn:hover{transform: translateY(-1px)}
-    .grid{
-      margin-top:22px;
+    .btn.gold{
+      border:1px solid rgba(202,162,90,.55);
+      background: linear-gradient(135deg, rgba(202,162,90,.22), rgba(240,212,154,.10));
+    }
+
+    .hero{
+      padding:22px 0 8px;
       display:grid; gap:14px;
       grid-template-columns: 1fr;
     }
-    .card{
-      background:rgba(255,255,255,.04);
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding:16px;
+    .heroCard{
+      border-radius: calc(var(--r) + 6px);
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(202,162,90,.16), transparent 55%),
+        radial-gradient(800px 450px at 70% 20%, rgba(240,212,154,.10), transparent 60%),
+        var(--panel);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+    }
+    .heroGrid{
+      display:grid; gap:0;
+      grid-template-columns: 1fr;
+      align-items:stretch;
+    }
+    .heroText{padding:18px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid rgba(202,162,90,.30);
+      background: rgba(202,162,90,.10);
+      color: rgba(244,241,232,.92);
+      width: fit-content;
+      font-size: 13px;
+    }
+    h1{margin:12px 0 8px; font-size: clamp(28px, 4.8vw, 52px); line-height:1.06}
+    .sub{margin:0; color:rgba(244,241,232,.78); max-width:60ch; font-size: clamp(14px, 2.2vw, 18px)}
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+
+    .heroMedia{
+      min-height: 220px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.45)),
+        url("images/hero.jpg");
+      background-size: cover;
+      background-position: center;
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+    .note{
+      margin-top:10px; color:rgba(201,193,174,.85); font-size:13px;
+    }
+
+    .section{margin-top:20px}
+    .section h2{margin:0 0 10px; font-size:22px; letter-spacing:.2px}
+    .section .muted{margin:0 0 12px; color:rgba(201,193,174,.92)}
+
+    .cats{
+      display:grid; gap:12px;
+      grid-template-columns: 1fr;
+    }
+    .tile{
+      border-radius: var(--r);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background: var(--panel2);
       box-shadow: 0 1px 0 rgba(255,255,255,.05) inset;
+      position:relative;
+      min-height:120px;
+      display:flex; align-items:flex-end;
     }
-    .card h3{margin:0 0 6px; font-size:18px}
-    .card p{margin:0; color:var(--muted)}
-    .section{margin-top:22px}
-    .section h2{margin:0 0 10px; font-size:22px}
-    .two{
-      display:grid; gap:14px; grid-template-columns:1fr;
+    .tile::before{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.65));
     }
-    .list{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+    .tile .label{
+      position:relative;
+      padding:14px;
+      width:100%;
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+    }
+    .tile .label strong{font-size:18px}
+    .tile .label span{color:rgba(244,241,232,.75); font-size:13px}
+    .tile:hover{border-color: rgba(202,162,90,.35)}
+    .t1{background-image: url("images/cat1.jpg"); background-size:cover; background-position:center}
+    .t2{background-image: url("images/cat2.jpg"); background-size:cover; background-position:center}
+    .t3{background-image: url("images/cat3.jpg"); background-size:cover; background-position:center}
+    .t4{background-image: url("images/cat4.jpg"); background-size:cover; background-position:center}
+
+    .filters{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin: 10px 0 14px;
+    }
+    .chip{
+      padding:10px 12px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: rgba(244,241,232,.88);
+      font-weight:700;
+      cursor:pointer;
+      user-select:none;
+    }
+    .chip[aria-pressed="true"]{
+      border-color: rgba(202,162,90,.55);
+      background: rgba(202,162,90,.14);
+      color: var(--gold2);
+    }
+
+    .grid{
+      display:grid; gap:12px;
+      grid-template-columns: 1fr;
+    }
+    .card{
+      border-radius: var(--r);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background: var(--panel2);
+      box-shadow: 0 1px 0 rgba(255,255,255,.05) inset;
+      cursor:pointer;
+    }
+    .card:hover{border-color: rgba(202,162,90,.35)}
+    .img{
+      width:100%;
+      aspect-ratio: 4/5;
+      background:#0b0b0e;
+      display:block;
+      object-fit: cover;
+    }
+    .meta{padding:12px 12px 14px}
+    .meta .title{font-weight:800; letter-spacing:.2px}
+    .meta .row{display:flex; justify-content:space-between; gap:10px; margin-top:6px; color:rgba(201,193,174,.92); font-size:13px}
+    .price{color: var(--gold2); font-weight:850}
+
+    .banner{
+      margin-top:18px;
+      border-radius: calc(var(--r) + 6px);
+      border:1px solid rgba(202,162,90,.30);
+      background:
+        linear-gradient(135deg, rgba(202,162,90,.18), rgba(240,212,154,.08)),
+        rgba(17,17,22,.9);
+      padding:16px;
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+    }
+    .banner strong{font-size:16px}
+    .banner span{color:rgba(201,193,174,.92)}
     .footer{
-      margin-top:30px; padding:18px 0; color:rgba(232,238,252,.75);
-      border-top:1px solid var(--border);
-      display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between;
+      margin-top:26px;
+      padding:18px 0;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:rgba(201,193,174,.92);
+      display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between;
       font-size:14px;
     }
-    .smalllinks{display:flex; gap:14px; flex-wrap:wrap; color:rgba(232,238,252,.75)}
-    /* Desktop */
-    @media (min-width: 860px){
-      .nav{display:flex}
-      .hero{grid-template-columns: 1.2fr .8fr; align-items:start; padding:54px 0 10px}
-      .grid{grid-template-columns: repeat(3, 1fr)}
-      .two{grid-template-columns: 1fr 1fr}
-      .card{padding:18px}
+
+    /* Lightbox */
+    .lb{
+      position:fixed; inset:0; z-index:50;
+      display:none; align-items:center; justify-content:center;
+      background: rgba(0,0,0,.82);
+      padding:18px;
+    }
+    .lb[aria-hidden="false"]{display:flex}
+    .lb .panel{
+      max-width: 920px;
+      width: 100%;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background: #0c0c10;
+      box-shadow: var(--shadow);
+    }
+    .lb img{width:100%; height:auto; display:block}
+    .lb .bar{
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      padding:12px 12px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:rgba(244,241,232,.9);
+    }
+    .lb .bar .left{min-width:0}
+    .lb .bar .left strong{display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .lb .bar .left span{display:block; font-size:13px; color:rgba(201,193,174,.92); margin-top:2px}
+    .x{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      border-radius: 12px;
+      padding:10px 12px;
+      font-weight:800;
+      cursor:pointer;
+      min-height:44px;
+    }
+
+    @media (min-width: 760px){
+      nav{display:flex}
+      .heroGrid{grid-template-columns: 1.2fr .8fr}
+      .heroText{padding:24px}
+      .heroMedia{min-height:100%; border-top:none; border-left:1px solid rgba(255,255,255,.06)}
+      .cats{grid-template-columns: repeat(4, 1fr)}
+      .grid{grid-template-columns: repeat(4, 1fr)}
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header class="topbar">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <div>Your Business Name</div>
-          <div style="font-weight:600;color:var(--muted);font-size:13px;margin-top:2px;">
-            Tagline (what you do in 4–6 words)
-          </div>
+  <header class="topbar">
+    <div class="inner">
+      <a class="brand" href="#top" aria-label="Home">
+        <img src="images/Sonia_Icon.png" alt="S&S Kurd Legacy logo" />
+        <div class="txt">
+          <div class="name">S&amp;S Kurd Legacy</div>
+          <div class="tag">Luxury garments • Shahla Sonia</div>
         </div>
-      </div>
+      </a>
 
-      <nav class="nav" aria-label="Primary">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
+      <nav aria-label="Primary">
+        <a href="#collection">Collection</a>
+        <a href="#new">New Arrivals</a>
+        <a href="#featured">Featured</a>
         <a href="#contact">Contact</a>
       </nav>
-    </header>
 
-    <main>
-      <section class="hero">
+      <a class="btn gold" href="#collection">Browse</a>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="hero">
+      <div class="heroCard">
+        <div class="heroGrid">
+          <div class="heroText">
+            <div class="pill">Curated • Limited pieces • Premium finishing</div>
+            <h1>Luxury garments with timeless elegance.</h1>
+            <p class="sub">
+              Explore signature styles — crafted details, refined silhouettes, and a collection designed to stand out.
+            </p>
+            <div class="cta">
+              <a class="btn gold" href="#collection">Browse the collection</a>
+              <a class="btn" href="#contact">Enquire / Order</a>
+            </div>
+            <p class="note">
+              Tip: Add a hero image at <strong>images/hero.jpg</strong> for the best look.
+            </p>
+          </div>
+
+          <div class="heroMedia" role="img" aria-label="Hero lookbook image"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Categories">
+      <h2>Browse by category</h2>
+      <p class="muted">Tap a category, then scroll to explore items.</p>
+
+      <div class="cats">
+        <a class="tile t1" href="#collection" data-filter="dresses">
+          <div class="label"><div><strong>Dresses</strong><br><span>Evening &amp; formal</span></div><span>→</span></div>
+        </a>
+        <a class="tile t2" href="#collection" data-filter="sets">
+          <div class="label"><div><strong>Sets</strong><br><span>Matching pieces</span></div><span>→</span></div>
+        </a>
+        <a class="tile t3" href="#collection" data-filter="abayas">
+          <div class="label"><div><strong>Abayas</strong><br><span>Modern classic</span></div><span>→</span></div>
+        </a>
+        <a class="tile t4" href="#collection" data-filter="accessories">
+          <div class="label"><div><strong>Accessories</strong><br><span>Finishing touches</span></div><span>→</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section id="collection" class="section" aria-label="Collection">
+      <h2>Collection</h2>
+      <p class="muted">Tap any item to view larger.</p>
+
+      <div class="filters" role="toolbar" aria-label="Filter collection">
+        <button class="chip" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" data-filter="dresses" aria-pressed="false">Dresses</button>
+        <button class="chip" data-filter="sets" aria-pressed="false">Sets</button>
+        <button class="chip" data-filter="abayas" aria-pressed="false">Abayas</button>
+        <button class="chip" data-filter="accessories" aria-pressed="false">Accessories</button>
+      </div>
+
+      <div class="grid" id="grid">
+        <!-- Replace titles/prices and images with your real items -->
+        <article class="card" data-cat="dresses" data-title="Gold Detail Dress" data-price="Inquire">
+          <img class="img" src="images/p1.jpg" alt="Gold Detail Dress" loading="lazy" />
+          <div class="meta">
+            <div class="title">Gold Detail Dress</div>
+            <div class="row"><span>Dress</span><span class="price">Inquire</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="sets" data-title="Luxury Two-Piece Set" data-price="Inquire">
+          <img class="img" src="images/p2.jpg" alt="Luxury Two-Piece Set" loading="lazy" />
+          <div class="meta">
+            <div class="title">Luxury Two-Piece Set</div>
+            <div class="row"><span>Set</span><span class="price">Inquire</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="abayas" data-title="Signature Abaya" data-price="Inquire">
+          <img class="img" src="images/p3.jpg" alt="Signature Abaya" loading="lazy" />
+          <div class="meta">
+            <div class="title">Signature Abaya</div>
+            <div class="row"><span>Abaya</span><span class="price">Inquire</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="accessories" data-title="Gold Accent Scarf" data-price="Inquire">
+          <img class="img" src="images/p4.jpg" alt="Gold Accent Scarf" loading="lazy" />
+          <div class="meta">
+            <div class="title">Gold Accent Scarf</div>
+            <div class="row"><span>Accessory</span><span class="price">Inquire</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="dresses" data-title="Evening Gown" data-price="Inquire">
+          <img class="img" src="images/p5.jpg" alt="Evening Gown" loading="lazy" />
+          <div class="meta">
+            <div class="title">Evening Gown</div>
+            <div class="row"><span>Dress</span><span class="price">Inquire</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="sets" data-title="Embroidered Set" data-price="Inquire">
+          <img class="img" src="images/p6.jpg" alt="Embroidered Set" loading="lazy" />
+          <div class="meta">
+            <div class="title">Embroidered Set</div>
+            <div class="row"><span>Set</span><span class="price">Inquire</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="abayas" data-title="Classic Black Abaya" data-price="Inquire">
+          <img class="img" src="images/p7.jpg" alt="Classic Black Abaya" loading="lazy" />
+          <div class="meta">
+            <div class="title">Classic Black Abaya</div>
+            <div class="row"><span>Abaya</span><span class="price">Inquire</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="accessories" data-title="Statement Belt" data-price="Inquire">
+          <img class="img" src="images/p8.jpg" alt="Statement Belt" loading="lazy" />
+          <div class="meta">
+            <div class="title">Statement Belt</div>
+            <div class="row"><span>Accessory</span><span class="price">Inquire</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="new" class="section" aria-label="New arrivals">
+      <div class="banner">
         <div>
-          <div class="pill">✅ Mobile-first • ⚡ Fast • 🔒 Secure on Cloudflare</div>
-          <h1>Clear headline: the result you deliver.</h1>
-          <p class="sub">
-            1–2 sentences explaining who you help and how. Keep it simple, specific, and benefits-focused.
-          </p>
-          <div class="cta">
-            <a class="btn primary" href="#contact">Get a quote</a>
-            <a class="btn" href="#services">See services</a>
-          </div>
+          <strong>New Arrivals</strong><br />
+          <span>Limited pieces — message to reserve.</span>
         </div>
+        <a class="btn gold" href="#contact">Enquire now</a>
+      </div>
+    </section>
 
-        <div class="card">
-          <h3>Quick contact</h3>
-          <p style="margin-bottom:10px;">Reply time: within 24 hours</p>
-          <p><strong>Email:</strong> <a href="mailto:you@example.com">you@example.com</a></p>
-          <p><strong>Phone:</strong> <a href="tel:+10000000000">+1 (000) 000-0000</a></p>
-          <p><strong>Location:</strong> Toronto (or your city)</p>
-          <p style="margin-top:10px;color:var(--muted);font-size:13px;">
-            Replace these with your real details.
-          </p>
-        </div>
-      </section>
+    <section id="featured" class="section" aria-label="Featured note">
+      <h2>Featured</h2>
+      <p class="muted">
+        Want a true “catalog” experience? Next step: create a separate <strong>collection.html</strong> page with categories + pagination.
+      </p>
+    </section>
 
-      <section id="services" class="section">
-        <h2>Services</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>Service 1</h3>
-            <p>Short description of the service and who it’s for.</p>
-          </div>
-          <div class="card">
-            <h3>Service 2</h3>
-            <p>Short description of the service and the outcome.</p>
-          </div>
-          <div class="card">
-            <h3>Service 3</h3>
-            <p>Short description with a clear deliverable.</p>
-          </div>
-        </div>
-      </section>
+    <section id="contact" class="section" aria-label="Contact">
+      <h2>Contact</h2>
+      <p class="muted">Use direct contact (fastest). We can add a form later.</p>
 
-      <section id="about" class="section">
-        <h2>About</h2>
-        <div class="two">
-          <div class="card">
-            <h3>Why choose us</h3>
-            <ul class="list">
-              <li>Reason #1 (trust / quality / speed)</li>
-              <li>Reason #2 (experience / process)</li>
-              <li>Reason #3 (support / warranty / clarity)</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>How we work</h3>
-            <ul class="list">
-              <li>Step 1: Quick call / requirements</li>
-              <li>Step 2: Quote + plan</li>
-              <li>Step 3: Delivery + support</li>
-            </ul>
-          </div>
+      <div class="banner">
+        <div>
+          <strong>Enquiries &amp; Orders</strong><br />
+          <span>Email: <a href="mailto:you@example.com">you@example.com</a> • Instagram: <a href="#" aria-label="Instagram link">@yourhandle</a></span>
         </div>
-      </section>
+        <a class="btn" href="mailto:you@example.com?subject=S%26S%20Kurd%20Legacy%20Inquiry">Email</a>
+      </div>
+    </section>
 
-      <section id="contact" class="section">
-        <h2>Contact</h2>
-        <div class="card">
-          <p style="margin:0 0 10px;color:var(--muted);">
-            For now, this is direct contact (no form). You can add a free form later.
-          </p>
-          <p style="margin:0;"><strong>Email:</strong> <a href="mailto:you@example.com">you@example.com</a></p>
-          <p style="margin:6px 0 0;"><strong>Phone:</strong> <a href="tel:+10000000000">+1 (000) 000-0000</a></p>
-        </div>
-      </section>
+    <footer class="footer">
+      <div>© <span id="y"></span> S&amp;S Kurd Legacy</div>
+      <div>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+  </main>
 
-      <footer class="footer">
-        <div>© <span id="y"></span> Your Business Name</div>
-        <div class="smalllinks">
-          <a href="#services">Services</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
+  <!-- Lightbox -->
+  <div class="lb" id="lb" aria-hidden="true" role="dialog" aria-label="Image viewer">
+    <div class="panel">
+      <img id="lbImg" alt="" />
+      <div class="bar">
+        <div class="left">
+          <strong id="lbTitle"></strong>
+          <span id="lbPrice"></span>
         </div>
-      </footer>
-    </main>
+        <button class="x" id="lbClose" type="button" aria-label="Close">Close</button>
+      </div>
+    </div>
   </div>
 
   <script>
+    // Year
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Filtering
+    const chips = Array.from(document.querySelectorAll(".chip"));
+    const grid = document.getElementById("grid");
+    const cards = Array.from(grid.querySelectorAll(".card"));
+
+    function setFilter(filter){
+      chips.forEach(c => c.setAttribute("aria-pressed", String(c.dataset.filter === filter)));
+      cards.forEach(card => {
+        const ok = filter === "all" || card.dataset.cat === filter;
+        card.style.display = ok ? "" : "none";
+      });
+    }
+
+    chips.forEach(chip => chip.addEventListener("click", () => setFilter(chip.dataset.filter)));
+
+    // Category tiles trigger filter + scroll
+    document.querySelectorAll(".tile").forEach(tile => {
+      tile.addEventListener("click", () => {
+        const f = tile.dataset.filter;
+        if (f) setFilter(f);
+      });
+    });
+
+    // Lightbox
+    const lb = document.getElementById("lb");
+    const lbImg = document.getElementById("lbImg");
+    const lbTitle = document.getElementById("lbTitle");
+    const lbPrice = document.getElementById("lbPrice");
+    const lbClose = document.getElementById("lbClose");
+
+    function openLB(card){
+      const img = card.querySelector("img");
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbTitle.textContent = card.dataset.title || img.alt || "Item";
+      lbPrice.textContent = card.dataset.price ? `Price: ${card.dataset.price}` : "";
+      lb.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLB(){
+      lb.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    cards.forEach(card => card.addEventListener("click", () => openLB(card)));
+    lbClose.addEventListener("click", closeLB);
+    lb.addEventListener("click", (e) => { if(e.target === lb) closeLB(); });
+    document.addEventListener("keydown", (e) => { if(e.key === "Escape" && lb.getAttribute("aria-hidden") === "false") closeLB(); });
   </script>
 </body>
 </html>
