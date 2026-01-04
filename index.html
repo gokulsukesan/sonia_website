@@ -218,6 +218,13 @@
       box-shadow: 0 20px 60px rgba(0,0,0,.6);
       border-radius: 6px;
     }
+
+    /* Make hero image feel clickable */
+    .heroMedia {
+      cursor: zoom-in;
+    }
+
+    
   </style>
 </head>
 
@@ -259,7 +266,12 @@
           </p>
         </div>
 
-        <div class="heroMedia" role="img" aria-label="Hero lookbook image"></div>
+        <div
+        class="heroMedia"
+        role="img"
+        aria-label="Hero lookbook image"
+        data-full="images/hero.png"
+      ></div>
       </div>
     </div>
   </section>
@@ -319,48 +331,61 @@
   <img id="lightbox-img" alt="">
 </div>
 
-  
 <script>
-    // Image fallback
-    document.querySelectorAll('img.img').forEach(img => {
-      img.addEventListener('error', () => {
-        const ph = document.createElement('div');
-        ph.className = 'img';
-        ph.setAttribute('data-missing','1');
-        ph.textContent = 'Image coming soon';
-        img.replaceWith(ph);
-      }, { once:true });
+  // Image fallback
+  document.querySelectorAll('img.img').forEach(img => {
+    img.addEventListener('error', () => {
+      const ph = document.createElement('div');
+      ph.className = 'img';
+      ph.setAttribute('data-missing', '1');
+      ph.textContent = 'Image coming soon';
+      img.replaceWith(ph);
+    }, { once: true });
+  });
+
+  // Lightbox zoom (products)
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  document.querySelectorAll('.card img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt || '';
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
     });
-  
-    // Lightbox zoom
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-  
-    document.querySelectorAll('.card img').forEach(img => {
-      img.addEventListener('click', () => {
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt || '';
-        lightbox.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      });
+  });
+
+  // Lightbox zoom (hero image)
+  const hero = document.querySelector('.heroMedia');
+  if (hero) {
+    hero.addEventListener('click', () => {
+      const src = hero.getAttribute('data-full');
+      if (!src) return;
+
+      lightboxImg.src = src;
+      lightboxImg.alt = 'Hero image';
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
     });
-  
-    // Close lightbox on click
-    lightbox.addEventListener('click', () => {
+  }
+
+  // Close lightbox on click
+  lightbox.addEventListener('click', () => {
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+  });
+
+  // Close on ESC key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
       lightbox.setAttribute('aria-hidden', 'true');
       lightboxImg.src = '';
       document.body.style.overflow = '';
-    });
-  
-    // Close on ESC key
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        lightbox.setAttribute('aria-hidden', 'true');
-        lightboxImg.src = '';
-        document.body.style.overflow = '';
-      }
-    });
-  </script>
+    }
+  });
+</script>
 
 </body>
 </html>
