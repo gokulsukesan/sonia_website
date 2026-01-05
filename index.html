@@ -20,104 +20,120 @@
       --muted:#c9c1ae;
       --gold:#caa25a;
       --gold2:#f0d49a;
+      --border:rgba(202,162,90,.22);
       --shadow: 0 14px 40px rgba(0,0,0,.55);
       --r:18px;
-      --brand-font:'Cinzel', serif;
+
+      --brand-font: 'Cinzel', serif;
+      --brand-gold: #caa25a;
     }
 
     *{box-sizing:border-box}
+    html,body{height:100%}
+
     body{
       margin:0;
-      font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(900px 480px at 20% 10%, rgba(202,162,90,.18), transparent 60%),
+        radial-gradient(800px 460px at 90% 20%, rgba(240,212,154,.10), transparent 60%),
+        var(--bg);
       color:var(--text);
+      line-height:1.55;
     }
 
-    a{text-decoration:none;color:inherit}
-    .wrap{max-width:1150px;margin:0 auto;padding:18px}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1150px; margin:0 auto; padding:18px}
 
-    /* HEADER */
     .topbar{
-      position:sticky;top:0;z-index:20;
-      backdrop-filter:blur(10px);
-      background:rgba(11,11,14,.85);
+      position:sticky; top:0; z-index:30;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,11,14,.86), rgba(11,11,14,.55));
       border-bottom:1px solid rgba(255,255,255,.06);
     }
     .topbar .inner{
-      max-width:1150px;margin:0 auto;
-      padding:14px 18px;
-      display:flex;align-items:center;justify-content:space-between;
+      max-width:1150px; margin:0 auto; padding:14px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
     }
-    .brand{display:flex;gap:12px;align-items:center}
-    .brand img{
-      width:44px;height:44px;border-radius:50%;
-      border:1px solid rgba(202,162,90,.35);
-    }
-    .brand .name{
-      font-family:var(--brand-font);
-      color:var(--gold);
-      letter-spacing:.08em;
-      font-weight:700;
-    }
-    .brand .tag{font-size:13px;color:var(--muted)}
 
-    nav{display:none;gap:18px}
-    nav a{
-      font-family:var(--brand-font);
-      letter-spacing:.12em;
-      text-transform:uppercase;
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand img{
+      width:44px; height:44px; border-radius:999px;
+      object-fit:cover; box-shadow: var(--shadow);
+      border:1px solid rgba(202,162,90,.35);
+      background:#000;
     }
+    .brand .name{font-weight:800}
+    .brand .tag{color:var(--muted); font-size:13px}
+
+    nav{display:none; gap:18px; font-weight:650}
+    nav a:hover{color:var(--gold2)}
 
     .btn{
       padding:12px 14px;
       border-radius:12px;
-      border:1px solid rgba(255,255,255,.1);
-      background:rgba(255,255,255,.05);
-      font-weight:700;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      font-weight:750;
+      min-height:44px;
+      display:inline-flex; align-items:center; justify-content:center;
+      transition: transform .12s ease;
+      cursor:pointer;
     }
+    .btn:hover{transform: translateY(-1px)}
     .btn.gold{
-      border-color:rgba(202,162,90,.5);
-      background:linear-gradient(135deg,rgba(202,162,90,.25),rgba(240,212,154,.1));
+      border:1px solid rgba(202,162,90,.55);
+      background: linear-gradient(135deg, rgba(202,162,90,.22), rgba(240,212,154,.10));
     }
 
     /* HERO */
-    .heroCard{
-      border-radius:24px;
-      overflow:hidden;
-      background:var(--panel);
-      box-shadow:var(--shadow);
+    .hero{
+      padding:22px 0 8px;
+      display:grid; gap:14px;
     }
-    .heroGrid{display:grid;grid-template-columns:1fr}
-    .heroText{padding:24px}
+    .heroCard{
+      border-radius: calc(var(--r) + 6px);
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(202,162,90,.16), transparent 55%),
+        radial-gradient(800px 450px at 70% 20%, rgba(240,212,154,.10), transparent 60%),
+        var(--panel);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:0;
+      align-items:stretch;
+    }
+    .heroText{padding:18px}
+
     .pill{
-      display:inline-block;
+      display:inline-flex;
       padding:8px 12px;
       border-radius:999px;
-      border:1px solid rgba(202,162,90,.3);
-      background:rgba(202,162,90,.1);
-      font-family:var(--brand-font);
-      color:var(--gold2);
+      border:1px solid rgba(202,162,90,.30);
+      background: rgba(202,162,90,.10);
+      color: rgba(244,241,232,.92);
       font-size:13px;
     }
-    h1{
-      font-family:var(--brand-font);
-      color:var(--gold);
-      letter-spacing:.08em;
-      margin:12px 0;
-    }
+    h1{margin:12px 0 8px; font-size:clamp(28px,4.8vw,52px)}
+    .sub{color:rgba(244,241,232,.78); max-width:60ch; margin:0}
+
     .heroMedia{
-      min-height:260px;
-      background:url("images/hero.png") center/cover no-repeat;
-      cursor:zoom-in;
+      min-height: 220px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.45)),
+        url("images/hero.png");
+      background-size: cover;
+      background-position: center;
+      border-top:1px solid rgba(255,255,255,.06);
+      cursor: zoom-in;
     }
 
     /* COLLECTION */
-    h2{
-      font-family:var(--brand-font);
-      color:var(--gold);
-      letter-spacing:.08em;
-      margin-top:32px;
-    }
+    .section{margin-top:20px}
     .grid{
       display:grid;
       gap:12px;
@@ -127,153 +143,271 @@
       border-radius:18px;
       overflow:hidden;
       border:1px solid rgba(255,255,255,.08);
-      background:var(--panel2);
+      background:#15151c;
+      cursor:pointer;
     }
     .img{
       width:100%;
       aspect-ratio:4/5;
-      object-fit:cover;
       display:block;
+      object-fit:cover;
+      background:#0b0b0e;
+    }
+    .img[data-missing="1"]{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:rgba(201,193,174,.85);
+      font-weight:750;
+      letter-spacing:.2px;
+      text-align:center;
     }
     .meta{padding:12px}
-    .price{
-      color:var(--gold2);
-      font-weight:800;
-    }
+    .price{color:var(--gold2); font-weight:850}
 
-    /* Inquire button */
+    /* Inquire button (looks like text) */
     .price.inquire{
       background:none;
       border:none;
       padding:0;
+      color:var(--gold2);
+      font-weight:850;
       cursor:pointer;
       font-family:inherit;
     }
-    .price.inquire:hover{text-decoration:underline}
+    .price.inquire:hover{ text-decoration: underline; }
 
-    /* LIGHTBOX */
-    #lightbox{
-      position:fixed;inset:0;
-      background:rgba(0,0,0,.92);
-      display:none;
+    /* CONTACT */
+    .contactRow{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
       align-items:center;
-      justify-content:center;
-      z-index:100;
-    }
-    #lightbox[aria-hidden="false"]{display:flex}
-    #lightbox img{
-      max-width:95vw;
-      max-height:95vh;
-      object-fit:contain;
-      border-radius:6px;
     }
 
-    @media(min-width:760px){
+    /* Brand typography */
+    .brand .name,
+    h1,
+    h2 {
+      font-family: var(--brand-font);
+      color: var(--brand-gold);
+      letter-spacing: 0.08em;
+    }
+    nav a {
+      font-family: var(--brand-font);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .pill {
+      color: var(--gold2);
+      font-family: var(--brand-font);
+    }
+
+    /* Fullscreen image lightbox */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      cursor: zoom-out;
+      padding: 18px;
+    }
+    #lightbox[aria-hidden="false"] { display: flex; }
+    #lightbox img {
+      max-width: 95vw;
+      max-height: 95vh;
+      object-fit: contain;
+      box-shadow: 0 20px 60px rgba(0,0,0,.6);
+      border-radius: 6px;
+    }
+
+    @media (min-width:760px){
       nav{display:flex}
       .grid{grid-template-columns:repeat(4,1fr)}
-      .heroGrid{grid-template-columns:1.2fr .8fr}
+      .heroGrid{grid-template-columns: 1.2fr .8fr}
+      .heroText{padding:24px}
+      .heroMedia{
+        min-height:100%;
+        border-top:none;
+        border-left:1px solid rgba(255,255,255,.06);
+      }
     }
   </style>
 </head>
 
 <body>
-
 <header class="topbar">
   <div class="inner">
     <div class="brand">
-      <img src="images/Sonia_Icon.png" alt="Logo">
+      <img src="images/Sonia_Icon.png" alt="S&amp;S Kurd Legacy logo" />
       <div>
         <div class="name">S&amp;S Kurd Legacy</div>
         <div class="tag">Luxury garments • Shahla Sonia</div>
       </div>
     </div>
+
     <nav>
       <a href="#collection">Collection</a>
-      <a href="https://www.instagram.com/imperial.kurd.maison" target="_blank">Instagram</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.instagram.com/imperial.kurd.maison" target="_blank" rel="noopener">Instagram</a>
     </nav>
+
     <a class="btn gold" href="#collection">Browse</a>
   </div>
 </header>
 
 <main class="wrap">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="heroCard">
+      <div class="heroGrid">
+        <div class="heroText">
+          <div class="pill">
+            Custom &amp; Ready-to-Wear • Trusted for 20+ Years • Canada-North York
+          </div>
+          <h1>Luxury garments with timeless elegance.</h1>
+          <p class="sub">
+            Explore signature styles — crafted details, refined silhouettes, and a collection designed to stand out.
+          </p>
+        </div>
 
-<section class="hero">
-  <div class="heroCard">
-    <div class="heroGrid">
-      <div class="heroText">
-        <div class="pill">Custom & Ready-to-Wear • Trusted for 20+ Years • Canada-North York</div>
-        <h1>Luxury garments with timeless elegance.</h1>
+        <div
+          class="heroMedia"
+          role="img"
+          aria-label="Hero lookbook image"
+          data-full="images/hero.png"
+        ></div>
       </div>
-      <div class="heroMedia" data-full="images/hero.png"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="collection">
-  <h2>Collection</h2>
-  <div class="grid">
+  <!-- COLLECTION -->
+  <section id="collection" class="section">
+    <h2>Collection</h2>
+    <div class="grid">
+      <article class="card">
+        <img class="img" src="images/p1.png" alt="Decorative Panel Dress" loading="lazy" />
+        <div class="meta">
+          <strong>Decorative Panel Dress</strong><br />
+          <button class="price inquire" type="button" data-product="Decorative Panel Dress">Inquire</button>
+        </div>
+      </article>
 
-    <article class="card">
-      <img class="img" src="images/p1.png" alt="Decorative Panel Dress">
-      <div class="meta">
-        <strong>Decorative Panel Dress</strong><br>
-        <button class="price inquire" data-product="Decorative Panel Dress">Inquire</button>
-      </div>
-    </article>
+      <article class="card">
+        <img class="img" src="images/p2.png" alt="Gold and Black Full-Length Dress" loading="lazy" />
+        <div class="meta">
+          <strong>Gold and Black Full-Length Dress</strong><br />
+          <button class="price inquire" type="button" data-product="Gold and Black Full-Length Dress">Inquire</button>
+        </div>
+      </article>
 
-    <article class="card">
-      <img class="img" src="images/p2.png" alt="Gold and Black Full-Length Dress">
-      <div class="meta">
-        <strong>Gold and Black Full-Length Dress</strong><br>
-        <button class="price inquire" data-product="Gold and Black Full-Length Dress">Inquire</button>
-      </div>
-    </article>
+      <article class="card">
+        <img class="img" src="images/p3.png" alt="Signature Abaya" loading="lazy" />
+        <div class="meta">
+          <strong>Signature Abaya</strong><br />
+          <button class="price inquire" type="button" data-product="Signature Abaya">Inquire</button>
+        </div>
+      </article>
 
-    <article class="card">
-      <img class="img" src="images/p3.png" alt="Signature Abaya">
-      <div class="meta">
-        <strong>Signature Abaya</strong><br>
-        <button class="price inquire" data-product="Signature Abaya">Inquire</button>
-      </div>
-    </article>
+      <article class="card">
+        <img class="img" src="images/p4.png" alt="White Embellished Long Dress" loading="lazy" />
+        <div class="meta">
+          <strong>White Embellished Long Dress</strong><br />
+          <button class="price inquire" type="button" data-product="White Embellished Long Dress">Inquire</button>
+        </div>
+      </article>
+    </div>
+  </section>
 
-    <article class="card">
-      <img class="img" src="images/p4.png" alt="White Embellished Long Dress">
-      <div class="meta">
-        <strong>White Embellished Long Dress</strong><br>
-        <button class="price inquire" data-product="White Embellished Long Dress">Inquire</button>
-      </div>
-    </article>
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <p class="sub" style="margin-top:6px; color:rgba(201,193,174,.92)">
+      For enquiries and orders, please email or message on Instagram.
+    </p>
 
-  </div>
-</section>
+    <div class="contactRow">
+      <!-- CHANGE EMAIL HERE if needed -->
+      <a class="btn" href="mailto:soniaebrahimi88@icloud.com?subject=S%26S%20Kurd%20Legacy%20Inquiry">Email</a>
 
+      <a
+        class="btn gold"
+        href="https://www.instagram.com/imperial.kurd.maison"
+        target="_blank"
+        rel="noopener"
+        aria-label="Instagram imperial.kurd.maison"
+      >
+        @imperial.kurd.maison
+      </a>
+    </div>
+  </section>
 </main>
 
+<!-- Image Lightbox -->
 <div id="lightbox" aria-hidden="true">
   <img id="lightbox-img" alt="">
 </div>
 
 <script>
-  // Lightbox
-  const lightbox = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lightbox-img');
+  // Image fallback
+  document.querySelectorAll('img.img').forEach(img => {
+    img.addEventListener('error', () => {
+      const ph = document.createElement('div');
+      ph.className = 'img';
+      ph.setAttribute('data-missing', '1');
+      ph.textContent = 'Image coming soon';
+      img.replaceWith(ph);
+    }, { once: true });
+  });
 
-  document.querySelectorAll('.img').forEach(img => {
+  // Lightbox zoom (products)
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  document.querySelectorAll('.card img').forEach(img => {
     img.addEventListener('click', () => {
-      lbImg.src = img.src;
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt || '';
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
     });
   });
 
+  // Lightbox zoom (hero image)
+  const hero = document.querySelector('.heroMedia');
+  if (hero) {
+    hero.addEventListener('click', () => {
+      const src = hero.getAttribute('data-full');
+      if (!src) return;
+
+      lightboxImg.src = src;
+      lightboxImg.alt = 'Hero image';
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+
+  // Close lightbox on click
   lightbox.addEventListener('click', () => {
     lightbox.setAttribute('aria-hidden', 'true');
-    lbImg.src = '';
+    lightboxImg.src = '';
     document.body.style.overflow = '';
   });
 
-  // Inquire: copy DM text + open Instagram profile
+  // Close on ESC key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Inquire: Copy finalized DM text + open Instagram profile
   const IG_PROFILE_URL = "https://www.instagram.com/imperial.kurd.maison/";
 
   async function copyText(text) {
@@ -287,9 +421,9 @@
 
   document.querySelectorAll('.price.inquire').forEach(btn => {
     btn.addEventListener('click', async (e) => {
-      e.stopPropagation();
+      e.stopPropagation(); // don't trigger card click/lightbox
 
-      const product = btn.dataset.product;
+      const product = btn.dataset.product || "this item";
       const msg =
 `Hello,
 I’m interested in the ${product} shown on your page.
@@ -299,10 +433,10 @@ Thank you.`;
 
       const ok = await copyText(msg);
 
-      // Open Instagram profile where user can tap "Message"
+      // Open IG profile so user can tap Message and paste
       window.open(IG_PROFILE_URL, "_blank", "noopener");
 
-      // Fallback if clipboard blocked
+      // If clipboard blocked, show prompt to copy manually
       if (!ok) {
         window.prompt("Copy this message and paste it in Instagram DM:", msg);
       } else {
@@ -311,7 +445,6 @@ Thank you.`;
     });
   });
 </script>
-
 
 </body>
 </html>
