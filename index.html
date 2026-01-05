@@ -253,12 +253,17 @@
     .contact-icons-min a {
       line-height: 0;
     }
-
-    .wa-icon {
+    
+    .social-3d {
       width: 18px;
       height: 18px;
+      transition: transform 0.2s ease, filter 0.2s ease;
     }
-
+    
+    .social-3d:hover {
+      transform: scale(1.12);
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
+    }
     
   </style>
 </head>
@@ -363,11 +368,11 @@
          target="_blank"
          rel="noopener"
          aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <rect x="2" y="2" width="20" height="20" rx="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="17.5" cy="6.5" r="0.5"/>
-        </svg>
+        <img
+          src="images/insta-3d.png"
+          alt="Instagram"
+          class="social-3d"
+        />
       </a>
 
       <!-- WhatsApp (NEW) -->
@@ -378,7 +383,7 @@
         <img
           src="images/whatsapp-3d.png"
           alt="WhatsApp"
-          class="wa-icon"
+          class="social-3d" 
         />
       </a>
     </div>
