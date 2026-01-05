@@ -256,39 +256,62 @@
 
 <script>
   // Lightbox
-  const lightbox=document.getElementById('lightbox');
-  const lbImg=document.getElementById('lightbox-img');
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
 
-  document.querySelectorAll('.img').forEach(img=>{
-    img.addEventListener('click',()=>{
-      lbImg.src=img.src;
-      lightbox.setAttribute('aria-hidden','false');
-      document.body.style.overflow='hidden';
+  document.querySelectorAll('.img').forEach(img => {
+    img.addEventListener('click', () => {
+      lbImg.src = img.src;
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
     });
   });
 
-  lightbox.addEventListener('click',()=>{
-    lightbox.setAttribute('aria-hidden','true');
-    lbImg.src='';
-    document.body.style.overflow='';
+  lightbox.addEventListener('click', () => {
+    lightbox.setAttribute('aria-hidden', 'true');
+    lbImg.src = '';
+    document.body.style.overflow = '';
   });
 
-  // Instagram DM
-  document.querySelectorAll('.price.inquire').forEach(btn=>{
-    btn.addEventListener('click',e=>{
+  // Inquire: copy DM text + open Instagram profile
+  const IG_PROFILE_URL = "https://www.instagram.com/imperial.kurd.maison/";
+
+  async function copyText(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  document.querySelectorAll('.price.inquire').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
       e.stopPropagation();
-      const product=btn.dataset.product;
-      const msg=
+
+      const product = btn.dataset.product;
+      const msg =
 `Hello,
 I’m interested in the ${product} shown on your page.
 Could you please let me know the price, available sizes, and delivery options?
 
 Thank you.`;
-      const url=`https://www.instagram.com/direct/new/?text=${encodeURIComponent(msg)}`;
-      window.open(url,'_blank');
+
+      const ok = await copyText(msg);
+
+      // Open Instagram profile where user can tap "Message"
+      window.open(IG_PROFILE_URL, "_blank", "noopener");
+
+      // Fallback if clipboard blocked
+      if (!ok) {
+        window.prompt("Copy this message and paste it in Instagram DM:", msg);
+      } else {
+        alert("Message copied. Instagram opened — tap Message and paste.");
+      }
     });
   });
 </script>
+
 
 </body>
 </html>
