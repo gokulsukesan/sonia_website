@@ -450,8 +450,8 @@
     }
   });
 
-  // Inquire: Copy finalized DM text + open Instagram profile
-  const IG_PROFILE_URL = "https://www.instagram.com/imperial.kurd.maison/";
+  // Inquire: Copy text + open WhatsApp
+  const WA_NUMBER = "14375338486"; // <-- change this
 
   async function copyText(text) {
     try {
@@ -464,7 +464,7 @@
 
   document.querySelectorAll('.price.inquire').forEach(btn => {
     btn.addEventListener('click', async (e) => {
-      e.stopPropagation(); // don't trigger card click/lightbox
+      e.stopPropagation();
 
       const product = btn.dataset.product || "this item";
       const msg =
@@ -474,20 +474,12 @@ Could you please let me know the price, available sizes, and delivery options?
 
 Thank you.`;
 
-      const ok = await copyText(msg);
-
-      // Open IG profile so user can tap Message and paste
-      window.open(IG_PROFILE_URL, "_blank", "noopener");
-
-      // If clipboard blocked, show prompt to copy manually
-      if (!ok) {
-        window.prompt("Copy this message and paste it in Instagram DM:", msg);
-      } else {
-        alert("Message copied. Instagram opened — tap Message and paste.");
-      }
+      const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+      window.open(waUrl, "_blank", "noopener");
     });
   });
 </script>
+
 
 </body>
 </html>
