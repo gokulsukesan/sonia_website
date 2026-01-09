@@ -179,6 +179,41 @@
       border:1px solid rgba(255,255,255,.08);
       background:#15151c;
     }
+    
+    @media (max-width: 759px) {
+      #collection .grid {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 85%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 14px;
+        padding-bottom: 10px;
+        
+        padding-left: 6px;
+        padding-right: 6px;
+        
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      #collection .grid::after{
+        content:"";
+        width: 6px;
+      }
+    
+      #collection .card {
+        scroll-snap-align: start;
+      }
+    
+      #collection .grid::-webkit-scrollbar {
+        display: none;
+      }
+    
+      #collection .grid {
+        scrollbar-width: none;
+      }
+    }
     .img{
       width:100%;
       aspect-ratio:4/5;
