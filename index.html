@@ -4,12 +4,44 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>S&amp;S Kurd Legacy | Luxury Garments</title>
-  <meta name="description" content="S&S Kurd Legacy — luxury garments. Browse our curated collection." />
+  <meta name="description" content="S&amp;S Kurd Legacy — luxury garments. Browse our curated collection." />
   <meta name="theme-color" content="#0b0b0e" />
 
+  <!-- Canonical (update to your real domain once you have one) -->
+  <link rel="canonical" href="https://example.pages.dev/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="S&amp;S Kurd Legacy | Luxury Garments" />
+  <meta property="og:description" content="Luxury garments — curated collection and custom pieces." />
+  <meta property="og:image" content="images/hero.png" />
+  <meta property="og:locale" content="en_CA" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="S&amp;S Kurd Legacy | Luxury Garments" />
+  <meta name="twitter:description" content="Luxury garments — curated collection and custom pieces." />
+  <meta name="twitter:image" content="images/hero.png" />
+
+  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Basic JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "S&S Kurd Legacy",
+    "description": "Luxury garments — curated collection and custom pieces.",
+    "areaServed": "North York, Toronto, Canada",
+    "sameAs": [
+      "https://www.instagram.com/imperial.kurd.maison"
+    ],
+    "email": "soniaebrahimi88@icloud.com"
+  }
+  </script>
 
   <style>
     :root{
@@ -30,6 +62,8 @@
 
     *{box-sizing:border-box}
     html,body{height:100%}
+
+    html { scroll-behavior: smooth; }
 
     body{
       margin:0;
@@ -144,7 +178,6 @@
       overflow:hidden;
       border:1px solid rgba(255,255,255,.08);
       background:#15151c;
-      cursor:pointer;
     }
     .img{
       width:100%;
@@ -152,6 +185,7 @@
       display:block;
       object-fit:cover;
       background:#0b0b0e;
+      cursor: zoom-in;
     }
     .img[data-missing="1"]{
       display:flex;
@@ -161,6 +195,7 @@
       font-weight:750;
       letter-spacing:.2px;
       text-align:center;
+      cursor: default;
     }
     .meta{padding:12px}
     .price{color:var(--gold2); font-weight:850}
@@ -223,6 +258,7 @@
       object-fit: contain;
       box-shadow: 0 20px 60px rgba(0,0,0,.6);
       border-radius: 6px;
+      cursor: default;
     }
 
     @media (min-width:760px){
@@ -241,30 +277,31 @@
     .contact-icons-min {
       display: inline-flex;
       gap: 12px;
+      align-items: center;
     }
-    
+
     .contact-icons-min svg {
       width: 22px;
       height: 22px;
       stroke-width: 1.6;
       display: block;
     }
-    
+
     .contact-icons-min a {
       line-height: 0;
     }
-    
+
     .social-3d {
       width: 22px;
       height: 22px;
       transition: transform 0.2s ease, filter 0.2s ease;
+      display: block;
     }
-    
+
     .social-3d:hover {
       transform: scale(1.12);
       filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
     }
-    
   </style>
 </head>
 
@@ -309,6 +346,7 @@
           role="img"
           aria-label="Hero lookbook image"
           data-full="images/hero.png"
+          title="Click to zoom"
         ></div>
       </div>
     </div>
@@ -354,8 +392,8 @@
 
   <!-- CONTACT -->
   <section id="contact" class="section">
-    <h2>Contact</h2> 
-    
+    <h2>Contact</h2>
+
     <div class="contact-icons-min">
       <a href="mailto:soniaebrahimi88@icloud.com" aria-label="Email">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -363,7 +401,7 @@
           <path d="M22 6l-10 7L2 6"/>
         </svg>
       </a>
-    
+
       <a href="https://www.instagram.com/imperial.kurd.maison"
          target="_blank"
          rel="noopener"
@@ -375,15 +413,14 @@
         />
       </a>
 
-      <!-- WhatsApp (NEW) -->
-      <a href="https://wa.me/14375338486"
+      <a href="https://wa.me/14375338486?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20your%20collection."
          target="_blank"
          rel="noopener"
          aria-label="WhatsApp">
         <img
           src="images/whatsapp-3d.png"
           alt="WhatsApp"
-          class="social-3d" 
+          class="social-3d"
         />
       </a>
     </div>
@@ -396,7 +433,37 @@
 </div>
 
 <script>
-  // Image fallback
+  // ---------- Helpers ----------
+  function isMobile() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }
+
+  function openLightbox(src, alt) {
+    if (!src) return;
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImg.src = '';
+    lightboxImg.alt = '';
+    document.body.style.overflow = '';
+  }
+
+  async function tryCopy(text) {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch {}
+    return false;
+  }
+
+  // ---------- Image fallback ----------
   document.querySelectorAll('img.img').forEach(img => {
     img.addEventListener('error', () => {
       const ph = document.createElement('div');
@@ -407,63 +474,45 @@
     }, { once: true });
   });
 
-  // Lightbox zoom (products)
+  // ---------- Lightbox zoom (products) ----------
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
 
-  document.querySelectorAll('.card img').forEach(img => {
-    img.addEventListener('click', () => {
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt || '';
-      lightbox.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
+  document.querySelectorAll('.card img.img').forEach(img => {
+    img.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openLightbox(img.src, img.alt || '');
     });
   });
 
-  // Lightbox zoom (hero image)
+  // ---------- Lightbox zoom (hero image) ----------
   const hero = document.querySelector('.heroMedia');
   if (hero) {
-    hero.addEventListener('click', () => {
+    hero.addEventListener('click', (e) => {
+      e.preventDefault();
       const src = hero.getAttribute('data-full');
-      if (!src) return;
-
-      lightboxImg.src = src;
-      lightboxImg.alt = 'Hero image';
-      lightbox.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
+      openLightbox(src, 'Hero image');
     });
   }
 
-  // Close lightbox on click
-  lightbox.addEventListener('click', () => {
-    lightbox.setAttribute('aria-hidden', 'true');
-    lightboxImg.src = '';
-    document.body.style.overflow = '';
-  });
+  // Close lightbox when clicking the overlay (not the image)
+  lightbox.addEventListener('click', () => closeLightbox());
+  lightboxImg.addEventListener('click', (e) => e.stopPropagation());
 
-  // Close on ESC key
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      lightbox.setAttribute('aria-hidden', 'true');
-      lightboxImg.src = '';
-      document.body.style.overflow = '';
+  // Close on ESC key (only when open)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.getAttribute('aria-hidden') === 'false') {
+      closeLightbox();
     }
   });
 
-  // Inquire: Copy text + open WhatsApp
-  const WA_NUMBER = "14375338486"; // <-- change this
-
-  async function copyText(text) {
-    try {
-      await navigator.clipboard.writeText(text);
-      return true;
-    } catch {
-      return false;
-    }
-  }
+  // ---------- Inquire: open WhatsApp with prefilled message ----------
+  const WA_NUMBER = "14375338486"; // 1 + area code + number, no + sign
 
   document.querySelectorAll('.price.inquire').forEach(btn => {
     btn.addEventListener('click', async (e) => {
+      e.preventDefault();
       e.stopPropagation();
 
       const product = btn.dataset.product || "this item";
@@ -474,12 +523,19 @@ Could you please let me know the price, available sizes, and delivery options?
 
 Thank you.`;
 
+      // Optional: copy (best-effort; do not block the flow)
+      tryCopy(msg);
+
       const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
-      window.open(waUrl, "_blank", "noopener");
+
+      // More reliable on mobile: navigate instead of popup
+      if (isMobile()) {
+        window.location.href = waUrl;
+      } else {
+        window.open(waUrl, "_blank", "noopener");
+      }
     });
   });
 </script>
-
-
 </body>
 </html>
