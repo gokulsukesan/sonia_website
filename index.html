@@ -15,7 +15,6 @@
     :root{
       --bg:#0b0b0e;
       --panel:#111116;
-      --panel2:#15151c;
       --text:#f4f1e8;
       --muted:#c9c1ae;
       --gold:#caa25a;
@@ -117,7 +116,10 @@
       background: rgba(202,162,90,.10);
       color: rgba(244,241,232,.92);
       font-size:13px;
+      font-family: var(--brand-font);
+      color: var(--gold2);
     }
+
     h1{margin:12px 0 8px; font-size:clamp(28px,4.8vw,52px)}
     h2{margin:0 0 10px}
     .sub{color:rgba(244,241,232,.78); max-width:60ch; margin:0}
@@ -150,33 +152,21 @@
     /* Mobile horizontal scroll */
     @media (max-width: 759px) {
       .section .grid {
-        display: grid;
+        display:grid;
         grid-auto-flow: column;
         grid-auto-columns: 85%;
         overflow-x: auto;
         overflow-y: hidden;
         gap: 14px;
-        padding-bottom: 10px;
-
-        padding-left: 6px;
-        padding-right: 6px;
-
+        padding: 0 6px 10px;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
-        scroll-padding-left: 6px; /* helps anchor/jump */
+        scroll-padding-left: 6px;
       }
-
-      .section .grid::after{
-        content:"";
-        width: 6px;
-      }
-
-      .section .card {
-        scroll-snap-align: start;
-      }
-
-      .section .grid::-webkit-scrollbar { display: none; }
-      .section .grid { scrollbar-width: none; }
+      .section .grid::after{ content:""; width:6px; }
+      .section .card{ scroll-snap-align: start; }
+      .section .grid::-webkit-scrollbar{ display:none; }
+      .section .grid{ scrollbar-width:none; }
     }
 
     .img{
@@ -193,14 +183,12 @@
       justify-content:center;
       color:rgba(201,193,174,.85);
       font-weight:750;
-      letter-spacing:.2px;
       text-align:center;
       cursor: default;
     }
     .meta{padding:12px}
     .price{color:var(--gold2); font-weight:850}
 
-    /* Inquire button (looks like text) */
     .price.inquire{
       background:none;
       border:none;
@@ -213,9 +201,7 @@
     .price.inquire:hover{ text-decoration: underline; }
 
     /* Brand typography */
-    .brand .name,
-    h1,
-    h2 {
+    .brand .name, h1, h2 {
       font-family: var(--brand-font);
       color: var(--brand-gold);
       letter-spacing: 0.08em;
@@ -225,23 +211,19 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
-    .pill {
-      color: var(--gold2);
-      font-family: var(--brand-font);
-    }
 
     /* Gallery Lightbox */
-    #lightbox {
-      position: fixed;
-      inset: 0;
+    #lightbox{
+      position:fixed;
+      inset:0;
       background: rgba(0,0,0,0.92);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-      padding: 18px;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:100;
+      padding:18px;
     }
-    #lightbox[aria-hidden="false"] { display: flex; }
+    #lightbox[aria-hidden="false"]{ display:flex; }
 
     .lb-figure{
       margin:0;
@@ -251,13 +233,13 @@
       gap:10px;
       max-width:95vw;
     }
-    #lightbox img {
-      max-width: 95vw;
-      max-height: 82vh;
-      object-fit: contain;
+    #lightbox img{
+      max-width:95vw;
+      max-height:82vh;
+      object-fit:contain;
       box-shadow: 0 20px 60px rgba(0,0,0,.6);
-      border-radius: 6px;
-      cursor: default;
+      border-radius:6px;
+      cursor:default;
     }
     #lightbox-cap{
       color: rgba(244,241,232,.75);
@@ -298,28 +280,27 @@
     }
 
     /* Contact icons */
-    .contact-icons-min {
-      display: inline-flex;
-      gap: 12px;
-      align-items: center;
+    .contact-icons-min{
+      display:inline-flex;
+      gap:12px;
+      align-items:center;
     }
-    .contact-icons-min svg {
-      width: 22px;
-      height: 22px;
-      stroke-width: 1.6;
-      display: block;
+    .contact-icons-min svg{
+      width:22px;
+      height:22px;
+      stroke-width:1.6;
+      display:block;
     }
-    .contact-icons-min a { line-height: 0; }
-
-    .social-3d {
-      width: 22px;
-      height: 22px;
-      transition: transform 0.2s ease, filter 0.2s ease;
-      display: block;
+    .contact-icons-min a{ line-height:0; }
+    .social-3d{
+      width:22px;
+      height:22px;
+      transition: transform .2s ease, filter .2s ease;
+      display:block;
     }
-    .social-3d:hover {
+    .social-3d:hover{
       transform: scale(1.12);
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,.35));
     }
   </style>
 </head>
@@ -352,290 +333,125 @@
     <div class="heroCard">
       <div class="heroGrid">
         <div class="heroText">
-          <div class="pill">
-            Custom &amp; Ready-to-Wear • Trusted for 20+ Years • Canada-North York
-          </div>
+          <div class="pill">Custom &amp; Ready-to-Wear • Trusted for 20+ Years • Canada-North York</div>
           <h1>Luxury garments with timeless elegance.</h1>
-          <p class="sub">
-            Explore signature styles — crafted details, refined silhouettes, and a collection designed to stand out.
-          </p>
+          <p class="sub">Explore signature styles — crafted details, refined silhouettes, and a collection designed to stand out.</p>
         </div>
 
-        <div
-          class="heroMedia"
+        <div class="heroMedia"
           role="img"
           aria-label="Hero lookbook image"
           data-full="images/Hero/hero.png"
-          title="Click to zoom"
-        ></div>
+          title="Click to zoom"></div>
       </div>
     </div>
   </section>
 
-  <!-- COLLECTION: DRESSES -->
+  <!-- DRESSES -->
   <section id="collection" class="section">
     <h2 id="dresses">Dresses</h2>
     <div class="grid">
-      <article class="card" data-name="Dress 1"
-        data-images='[
-          "images/Collection/dresses/dress1/1.png",
-          "images/Collection/dresses/dress1/2.png",
-          "images/Collection/dresses/dress1/3.png"
-        ]'>
+      <article class="card" data-name="Dress 1" data-images='["images/Collection/dresses/dress1/1.png","images/Collection/dresses/dress1/2.png","images/Collection/dresses/dress1/3.png"]'>
         <img class="img" src="images/Collection/dresses/dress1/1.png" alt="Dress 1" loading="lazy" />
-        <div class="meta">
-          <strong>Dress 1</strong><br />
-          <button class="price inquire" type="button" data-product="Dress 1">Inquire</button>
-        </div>
+        <div class="meta"><strong>Dress 1</strong><br /><button class="price inquire" type="button" data-product="Dress 1">Inquire</button></div>
       </article>
 
-      <article class="card" data-name="Dress 2"
-        data-images='[
-          "images/Collection/dresses/dress2/1.png",
-          "images/Collection/dresses/dress2/2.png",
-          "images/Collection/dresses/dress2/3.png"
-        ]'>
+      <article class="card" data-name="Dress 2" data-images='["images/Collection/dresses/dress2/1.png","images/Collection/dresses/dress2/2.png","images/Collection/dresses/dress2/3.png"]'>
         <img class="img" src="images/Collection/dresses/dress2/1.png" alt="Dress 2" loading="lazy" />
-        <div class="meta">
-          <strong>Dress 2</strong><br />
-          <button class="price inquire" type="button" data-product="Dress 2">Inquire</button>
-        </div>
+        <div class="meta"><strong>Dress 2</strong><br /><button class="price inquire" type="button" data-product="Dress 2">Inquire</button></div>
       </article>
 
-      <article class="card" data-name="Dress 3"
-        data-images='[
-          "images/Collection/dresses/dress3/1.png",
-          "images/Collection/dresses/dress3/2.png",
-          "images/Collection/dresses/dress3/3.png"
-        ]'>
+      <article class="card" data-name="Dress 3" data-images='["images/Collection/dresses/dress3/1.png","images/Collection/dresses/dress3/2.png","images/Collection/dresses/dress3/3.png"]'>
         <img class="img" src="images/Collection/dresses/dress3/1.png" alt="Dress 3" loading="lazy" />
-        <div class="meta">
-          <strong>Dress 3</strong><br />
-          <button class="price inquire" type="button" data-product="Dress 3">Inquire</button>
-        </div>
+        <div class="meta"><strong>Dress 3</strong><br /><button class="price inquire" type="button" data-product="Dress 3">Inquire</button></div>
       </article>
 
-      <article class="card" data-name="Dress 4"
-        data-images='[
-          "images/Collection/dresses/dress4/1.png",
-          "images/Collection/dresses/dress4/2.png",
-          "images/Collection/dresses/dress4/3.png"
-        ]'>
+      <article class="card" data-name="Dress 4" data-images='["images/Collection/dresses/dress4/1.png","images/Collection/dresses/dress4/2.png","images/Collection/dresses/dress4/3.png"]'>
         <img class="img" src="images/Collection/dresses/dress4/1.png" alt="Dress 4" loading="lazy" />
-        <div class="meta">
-          <strong>Dress 4</strong><br />
-          <button class="price inquire" type="button" data-product="Dress 4">Inquire</button>
-        </div>
+        <div class="meta"><strong>Dress 4</strong><br /><button class="price inquire" type="button" data-product="Dress 4">Inquire</button></div>
       </article>
 
-      <article class="card" data-name="Dress 5"
-        data-images='[
-          "images/Collection/dresses/dress5/1.png",
-          "images/Collection/dresses/dress5/2.png",
-          "images/Collection/dresses/dress5/3.png"
-        ]'>
+      <article class="card" data-name="Dress 5" data-images='["images/Collection/dresses/dress5/1.png","images/Collection/dresses/dress5/2.png","images/Collection/dresses/dress5/3.png"]'>
         <img class="img" src="images/Collection/dresses/dress5/1.png" alt="Dress 5" loading="lazy" />
-        <div class="meta">
-          <strong>Dress 5</strong><br />
-          <button class="price inquire" type="button" data-product="Dress 5">Inquire</button>
-        </div>
+        <div class="meta"><strong>Dress 5</strong><br /><button class="price inquire" type="button" data-product="Dress 5">Inquire</button></div>
       </article>
 
-      <article class="card" data-name="Dress 6"
-        data-images='[
-          "images/Collection/dresses/dress6/1.png",
-          "images/Collection/dresses/dress6/2.png",
-          "images/Collection/dresses/dress6/3.png"
-        ]'>
+      <article class="card" data-name="Dress 6" data-images='["images/Collection/dresses/dress6/1.png","images/Collection/dresses/dress6/2.png","images/Collection/dresses/dress6/3.png"]'>
         <img class="img" src="images/Collection/dresses/dress6/1.png" alt="Dress 6" loading="lazy" />
-        <div class="meta">
-          <strong>Dress 6</strong><br />
-          <button class="price inquire" type="button" data-product="Dress 6">Inquire</button>
-        </div>
+        <div class="meta"><strong>Dress 6</strong><br /><button class="price inquire" type="button" data-product="Dress 6">Inquire</button></div>
       </article>
     </div>
   </section>
 
-  <!-- COLLECTION: VESTS -->
-  <section class="section">
-    <h2 id="vests">Vests</h2>
+  <!-- VESTS -->
+  <section id="vests" class="section">
+    <h2>Vests</h2>
     <div class="grid">
-
-      <!-- vest1 -->
-      <article class="card" data-name="Vest 1"
-        data-images='[
-          "images/Collection/vests/vest1/1.png",
-          "images/Collection/vests/vest1/2.png",
-          "images/Collection/vests/vest1/3.png"
-        ]'>
+      <article class="card" data-name="Vest 1" data-images='["images/Collection/vests/vest1/1.png","images/Collection/vests/vest1/2.png","images/Collection/vests/vest1/3.png"]'>
         <img class="img" src="images/Collection/vests/vest1/1.png" alt="Vest 1" loading="lazy" />
-        <div class="meta">
-          <strong>Vest 1</strong><br />
-          <button class="price inquire" type="button" data-product="Vest 1">Inquire</button>
-        </div>
+        <div class="meta"><strong>Vest 1</strong><br /><button class="price inquire" type="button" data-product="Vest 1">Inquire</button></div>
       </article>
 
-      <!-- vest2 -->
-      <article class="card" data-name="Vest 2"
-        data-images='[
-          "images/Collection/vests/vest2/1.png",
-          "images/Collection/vests/vest2/2.png",
-          "images/Collection/vests/vest2/3.png"
-        ]'>
+      <article class="card" data-name="Vest 2" data-images='["images/Collection/vests/vest2/1.png","images/Collection/vests/vest2/2.png","images/Collection/vests/vest2/3.png"]'>
         <img class="img" src="images/Collection/vests/vest2/1.png" alt="Vest 2" loading="lazy" />
-        <div class="meta">
-          <strong>Vest 2</strong><br />
-          <button class="price inquire" type="button" data-product="Vest 2">Inquire</button>
-        </div>
+        <div class="meta"><strong>Vest 2</strong><br /><button class="price inquire" type="button" data-product="Vest 2">Inquire</button></div>
       </article>
 
-      <!-- vest3 -->
-      <article class="card" data-name="Vest 3"
-        data-images='[
-          "images/Collection/vests/vest3/1.png",
-          "images/Collection/vests/vest3/2.png",
-          "images/Collection/vests/vest3/3.png"
-        ]'>
+      <article class="card" data-name="Vest 3" data-images='["images/Collection/vests/vest3/1.png","images/Collection/vests/vest3/2.png","images/Collection/vests/vest3/3.png"]'>
         <img class="img" src="images/Collection/vests/vest3/1.png" alt="Vest 3" loading="lazy" />
-        <div class="meta">
-          <strong>Vest 3</strong><br />
-          <button class="price inquire" type="button" data-product="Vest 3">Inquire</button>
-        </div>
+        <div class="meta"><strong>Vest 3</strong><br /><button class="price inquire" type="button" data-product="Vest 3">Inquire</button></div>
       </article>
 
-      <!-- vest4 -->
-      <article class="card" data-name="Vest 4"
-        data-images='[
-          "images/Collection/vests/vest4/1.png",
-          "images/Collection/vests/vest4/2.png",
-          "images/Collection/vests/vest4/3.png"
-        ]'>
+      <article class="card" data-name="Vest 4" data-images='["images/Collection/vests/vest4/1.png","images/Collection/vests/vest4/2.png","images/Collection/vests/vest4/3.png"]'>
         <img class="img" src="images/Collection/vests/vest4/1.png" alt="Vest 4" loading="lazy" />
-        <div class="meta">
-          <strong>Vest 4</strong><br />
-          <button class="price inquire" type="button" data-product="Vest 4">Inquire</button>
-        </div>
+        <div class="meta"><strong>Vest 4</strong><br /><button class="price inquire" type="button" data-product="Vest 4">Inquire</button></div>
       </article>
 
-      <!-- vest5 -->
-      <article class="card" data-name="Vest 5"
-        data-images='[
-          "images/Collection/vests/vest5/1.png",
-          "images/Collection/vests/vest5/2.png",
-          "images/Collection/vests/vest5/3.png"
-        ]'>
+      <article class="card" data-name="Vest 5" data-images='["images/Collection/vests/vest5/1.png","images/Collection/vests/vest5/2.png","images/Collection/vests/vest5/3.png"]'>
         <img class="img" src="images/Collection/vests/vest5/1.png" alt="Vest 5" loading="lazy" />
-        <div class="meta">
-          <strong>Vest 5</strong><br />
-          <button class="price inquire" type="button" data-product="Vest 5">Inquire</button>
-        </div>
+        <div class="meta"><strong>Vest 5</strong><br /><button class="price inquire" type="button" data-product="Vest 5">Inquire</button></div>
       </article>
 
-      <!-- vest6 -->
-      <article class="card" data-name="Vest 6"
-        data-images='[
-          "images/Collection/vests/vest6/1.png",
-          "images/Collection/vests/vest6/2.png",
-          "images/Collection/vests/vest6/3.png"
-        ]'>
+      <article class="card" data-name="Vest 6" data-images='["images/Collection/vests/vest6/1.png","images/Collection/vests/vest6/2.png","images/Collection/vests/vest6/3.png"]'>
         <img class="img" src="images/Collection/vests/vest6/1.png" alt="Vest 6" loading="lazy" />
-        <div class="meta">
-          <strong>Vest 6</strong><br />
-          <button class="price inquire" type="button" data-product="Vest 6">Inquire</button>
-        </div>
+        <div class="meta"><strong>Vest 6</strong><br /><button class="price inquire" type="button" data-product="Vest 6">Inquire</button></div>
       </article>
 
-      <!-- vest7 -->
-      <article class="card" data-name="Vest 7"
-        data-images='[
-          "images/Collection/vests/vest7/1.png",
-          "images/Collection/vests/vest7/2.png",
-          "images/Collection/vests/vest7/3.png"
-        ]'>
+      <article class="card" data-name="Vest 7" data-images='["images/Collection/vests/vest7/1.png","images/Collection/vests/vest7/2.png","images/Collection/vests/vest7/3.png"]'>
         <img class="img" src="images/Collection/vests/vest7/1.png" alt="Vest 7" loading="lazy" />
-        <div class="meta">
-          <strong>Vest 7</strong><br />
-          <button class="price inquire" type="button" data-product="Vest 7">Inquire</button>
-        </div>
+        <div class="meta"><strong>Vest 7</strong><br /><button class="price inquire" type="button" data-product="Vest 7">Inquire</button></div>
       </article>
 
-      <!-- vest8 -->
-      <article class="card" data-name="Vest 8"
-        data-images='[
-          "images/Collection/vests/vest8/1.png",
-          "images/Collection/vests/vest8/2.png",
-          "images/Collection/vests/vest8/3.png"
-        ]'>
+      <article class="card" data-name="Vest 8" data-images='["images/Collection/vests/vest8/1.png","images/Collection/vests/vest8/2.png","images/Collection/vests/vest8/3.png"]'>
         <img class="img" src="images/Collection/vests/vest8/1.png" alt="Vest 8" loading="lazy" />
-        <div class="meta">
-          <strong>Vest 8</strong><br />
-          <button class="price inquire" type="button" data-product="Vest 8">Inquire</button>
-        </div>
+        <div class="meta"><strong>Vest 8</strong><br /><button class="price inquire" type="button" data-product="Vest 8">Inquire</button></div>
       </article>
 
-      <!-- vest9 -->
-      <article class="card" data-name="Vest 9"
-        data-images='[
-          "images/Collection/vests/vest9/1.png",
-          "images/Collection/vests/vest9/2.png",
-          "images/Collection/vests/vest9/3.png"
-        ]'>
+      <article class="card" data-name="Vest 9" data-images='["images/Collection/vests/vest9/1.png","images/Collection/vests/vest9/2.png","images/Collection/vests/vest9/3.png"]'>
         <img class="img" src="images/Collection/vests/vest9/1.png" alt="Vest 9" loading="lazy" />
-        <div class="meta">
-          <strong>Vest 9</strong><br />
-          <button class="price inquire" type="button" data-product="Vest 9">Inquire</button>
-        </div>
+        <div class="meta"><strong>Vest 9</strong><br /><button class="price inquire" type="button" data-product="Vest 9">Inquire</button></div>
       </article>
 
-      <!-- vest10 -->
-      <article class="card" data-name="Vest 10"
-        data-images='[
-          "images/Collection/vests/vest10/1.png",
-          "images/Collection/vests/vest10/2.png",
-          "images/Collection/vests/vest10/3.png"
-        ]'>
+      <article class="card" data-name="Vest 10" data-images='["images/Collection/vests/vest10/1.png","images/Collection/vests/vest10/2.png","images/Collection/vests/vest10/3.png"]'>
         <img class="img" src="images/Collection/vests/vest10/1.png" alt="Vest 10" loading="lazy" />
-        <div class="meta">
-          <strong>Vest 10</strong><br />
-          <button class="price inquire" type="button" data-product="Vest 10">Inquire</button>
-        </div>
+        <div class="meta"><strong>Vest 10</strong><br /><button class="price inquire" type="button" data-product="Vest 10">Inquire</button></div>
       </article>
 
-      <!-- vest11 -->
-      <article class="card" data-name="Vest 11"
-        data-images='[
-          "images/Collection/vests/vest11/1.png",
-          "images/Collection/vests/vest11/2.png",
-          "images/Collection/vests/vest11/3.png"
-        ]'>
+      <article class="card" data-name="Vest 11" data-images='["images/Collection/vests/vest11/1.png","images/Collection/vests/vest11/2.png","images/Collection/vests/vest11/3.png"]'>
         <img class="img" src="images/Collection/vests/vest11/1.png" alt="Vest 11" loading="lazy" />
-        <div class="meta">
-          <strong>Vest 11</strong><br />
-          <button class="price inquire" type="button" data-product="Vest 11">Inquire</button>
-        </div>
+        <div class="meta"><strong>Vest 11</strong><br /><button class="price inquire" type="button" data-product="Vest 11">Inquire</button></div>
       </article>
 
-      <!-- vest12 -->
-      <article class="card" data-name="Vest 12"
-        data-images='[
-          "images/Collection/vests/vest12/1.png",
-          "images/Collection/vests/vest12/2.png",
-          "images/Collection/vests/vest12/3.png"
-        ]'>
+      <article class="card" data-name="Vest 12" data-images='["images/Collection/vests/vest12/1.png","images/Collection/vests/vest12/2.png","images/Collection/vests/vest12/3.png"]'>
         <img class="img" src="images/Collection/vests/vest12/1.png" alt="Vest 12" loading="lazy" />
-        <div class="meta">
-          <strong>Vest 12</strong><br />
-          <button class="price inquire" type="button" data-product="Vest 12">Inquire</button>
-        </div>
+        <div class="meta"><strong>Vest 12</strong><br /><button class="price inquire" type="button" data-product="Vest 12">Inquire</button></div>
       </article>
-
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact" class="section">
     <h2>Contact</h2>
-
     <div class="contact-icons-min">
       <a href="mailto:soniaebrahimi88@icloud.com" aria-label="Email">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -644,17 +460,11 @@
         </svg>
       </a>
 
-      <a href="https://www.instagram.com/imperial.kurd.maison"
-         target="_blank"
-         rel="noopener"
-         aria-label="Instagram">
+      <a href="https://www.instagram.com/imperial.kurd.maison" target="_blank" rel="noopener" aria-label="Instagram">
         <img src="images/Logo/insta-3d.png" alt="Instagram" class="social-3d" />
       </a>
 
-      <a href="https://wa.me/14375338486"
-         target="_blank"
-         rel="noopener"
-         aria-label="WhatsApp">
+      <a href="https://wa.me/14375338486" target="_blank" rel="noopener" aria-label="WhatsApp">
         <img src="images/Logo/whatsapp-3d.png" alt="WhatsApp" class="social-3d" />
       </a>
     </div>
@@ -680,19 +490,21 @@
     return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   }
 
-  // reset horizontal scroll when jumping to anchors (fixes "first card missing" on mobile)
-  function resetRowToStart(sectionId) {
-    const grid = document.querySelector(`${sectionId} .grid`);
-    if (grid) grid.scrollLeft = 0;
+  // Fix: mobile browsers sometimes start horizontal rows not at 0
+  function resetAllRows() {
+    document.querySelectorAll('.section .grid').forEach(g => g.scrollLeft = 0);
   }
 
-  window.addEventListener('hashchange', () => {
-    if (location.hash === '#collection' || location.hash === '#dresses') resetRowToStart('#collection');
-    if (location.hash === '#vests') resetRowToStart('#vests') /* this is an h2 id, section is next */;
+  window.addEventListener('load', () => {
+    requestAnimationFrame(() => requestAnimationFrame(resetAllRows));
   });
 
-  window.addEventListener('load', () => {
-    if (location.hash === '#collection' || location.hash === '#dresses') resetRowToStart('#collection');
+  window.addEventListener('hashchange', () => {
+    requestAnimationFrame(() => requestAnimationFrame(resetAllRows));
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', () => setTimeout(resetAllRows, 50));
   });
 
   // ---------- Image fallback ----------
@@ -817,7 +629,7 @@
     }
   }, { passive: true });
 
-  // Open gallery when clicking card image (both Dresses + Vests)
+  // Open gallery on card image click
   document.querySelectorAll('.card').forEach(card => {
     const img = card.querySelector('img.img');
     if (!img) return;
@@ -847,7 +659,7 @@
     });
   }
 
-  // ---------- Inquire: WhatsApp prefilled ----------
+  // Inquire: WhatsApp prefilled
   const WA_NUMBER = "14375338486";
   document.querySelectorAll('.price.inquire').forEach(btn => {
     btn.addEventListener('click', (e) => {
