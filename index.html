@@ -119,6 +119,7 @@
       font-size:13px;
     }
     h1{margin:12px 0 8px; font-size:clamp(28px,4.8vw,52px)}
+    h2{margin:0 0 10px}
     .sub{color:rgba(244,241,232,.78); max-width:60ch; margin:0}
 
     .heroMedia{
@@ -146,7 +147,7 @@
       background:#15151c;
     }
 
-    /* Mobile horizontal scroll (applies to any section with .grid inside it) */
+    /* Mobile horizontal scroll */
     @media (max-width: 759px) {
       .section .grid {
         display: grid;
@@ -162,6 +163,7 @@
 
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
+        scroll-padding-left: 6px; /* helps anchor/jump */
       }
 
       .section .grid::after{
@@ -335,8 +337,9 @@
 
     <nav>
       <a href="#collection">Collection</a>
+      <a href="#dresses">Dresses</a>
+      <a href="#vests">Vests</a>
       <a href="#contact">Contact</a>
-      <a href="https://www.instagram.com/imperial.kurd.maison" target="_blank" rel="noopener">Instagram</a>
     </nav>
 
     <a class="btn gold" href="#collection">Browse</a>
@@ -371,10 +374,8 @@
 
   <!-- COLLECTION: DRESSES -->
   <section id="collection" class="section">
-    <h2>Dresses</h2>
+    <h2 id="dresses">Dresses</h2>
     <div class="grid">
-
-      <!-- You can rename the display name later; folder stays dress1 -->
       <article class="card" data-name="Dress 1"
         data-images='[
           "images/Collection/dresses/dress1/1.png",
@@ -452,6 +453,181 @@
           <button class="price inquire" type="button" data-product="Dress 6">Inquire</button>
         </div>
       </article>
+    </div>
+  </section>
+
+  <!-- COLLECTION: VESTS -->
+  <section class="section">
+    <h2 id="vests">Vests</h2>
+    <div class="grid">
+
+      <!-- vest1 -->
+      <article class="card" data-name="Vest 1"
+        data-images='[
+          "images/Collection/vests/vest1/1.png",
+          "images/Collection/vests/vest1/2.png",
+          "images/Collection/vests/vest1/3.png"
+        ]'>
+        <img class="img" src="images/Collection/vests/vest1/1.png" alt="Vest 1" loading="lazy" />
+        <div class="meta">
+          <strong>Vest 1</strong><br />
+          <button class="price inquire" type="button" data-product="Vest 1">Inquire</button>
+        </div>
+      </article>
+
+      <!-- vest2 -->
+      <article class="card" data-name="Vest 2"
+        data-images='[
+          "images/Collection/vests/vest2/1.png",
+          "images/Collection/vests/vest2/2.png",
+          "images/Collection/vests/vest2/3.png"
+        ]'>
+        <img class="img" src="images/Collection/vests/vest2/1.png" alt="Vest 2" loading="lazy" />
+        <div class="meta">
+          <strong>Vest 2</strong><br />
+          <button class="price inquire" type="button" data-product="Vest 2">Inquire</button>
+        </div>
+      </article>
+
+      <!-- vest3 -->
+      <article class="card" data-name="Vest 3"
+        data-images='[
+          "images/Collection/vests/vest3/1.png",
+          "images/Collection/vests/vest3/2.png",
+          "images/Collection/vests/vest3/3.png"
+        ]'>
+        <img class="img" src="images/Collection/vests/vest3/1.png" alt="Vest 3" loading="lazy" />
+        <div class="meta">
+          <strong>Vest 3</strong><br />
+          <button class="price inquire" type="button" data-product="Vest 3">Inquire</button>
+        </div>
+      </article>
+
+      <!-- vest4 -->
+      <article class="card" data-name="Vest 4"
+        data-images='[
+          "images/Collection/vests/vest4/1.png",
+          "images/Collection/vests/vest4/2.png",
+          "images/Collection/vests/vest4/3.png"
+        ]'>
+        <img class="img" src="images/Collection/vests/vest4/1.png" alt="Vest 4" loading="lazy" />
+        <div class="meta">
+          <strong>Vest 4</strong><br />
+          <button class="price inquire" type="button" data-product="Vest 4">Inquire</button>
+        </div>
+      </article>
+
+      <!-- vest5 -->
+      <article class="card" data-name="Vest 5"
+        data-images='[
+          "images/Collection/vests/vest5/1.png",
+          "images/Collection/vests/vest5/2.png",
+          "images/Collection/vests/vest5/3.png"
+        ]'>
+        <img class="img" src="images/Collection/vests/vest5/1.png" alt="Vest 5" loading="lazy" />
+        <div class="meta">
+          <strong>Vest 5</strong><br />
+          <button class="price inquire" type="button" data-product="Vest 5">Inquire</button>
+        </div>
+      </article>
+
+      <!-- vest6 -->
+      <article class="card" data-name="Vest 6"
+        data-images='[
+          "images/Collection/vests/vest6/1.png",
+          "images/Collection/vests/vest6/2.png",
+          "images/Collection/vests/vest6/3.png"
+        ]'>
+        <img class="img" src="images/Collection/vests/vest6/1.png" alt="Vest 6" loading="lazy" />
+        <div class="meta">
+          <strong>Vest 6</strong><br />
+          <button class="price inquire" type="button" data-product="Vest 6">Inquire</button>
+        </div>
+      </article>
+
+      <!-- vest7 -->
+      <article class="card" data-name="Vest 7"
+        data-images='[
+          "images/Collection/vests/vest7/1.png",
+          "images/Collection/vests/vest7/2.png",
+          "images/Collection/vests/vest7/3.png"
+        ]'>
+        <img class="img" src="images/Collection/vests/vest7/1.png" alt="Vest 7" loading="lazy" />
+        <div class="meta">
+          <strong>Vest 7</strong><br />
+          <button class="price inquire" type="button" data-product="Vest 7">Inquire</button>
+        </div>
+      </article>
+
+      <!-- vest8 -->
+      <article class="card" data-name="Vest 8"
+        data-images='[
+          "images/Collection/vests/vest8/1.png",
+          "images/Collection/vests/vest8/2.png",
+          "images/Collection/vests/vest8/3.png"
+        ]'>
+        <img class="img" src="images/Collection/vests/vest8/1.png" alt="Vest 8" loading="lazy" />
+        <div class="meta">
+          <strong>Vest 8</strong><br />
+          <button class="price inquire" type="button" data-product="Vest 8">Inquire</button>
+        </div>
+      </article>
+
+      <!-- vest9 -->
+      <article class="card" data-name="Vest 9"
+        data-images='[
+          "images/Collection/vests/vest9/1.png",
+          "images/Collection/vests/vest9/2.png",
+          "images/Collection/vests/vest9/3.png"
+        ]'>
+        <img class="img" src="images/Collection/vests/vest9/1.png" alt="Vest 9" loading="lazy" />
+        <div class="meta">
+          <strong>Vest 9</strong><br />
+          <button class="price inquire" type="button" data-product="Vest 9">Inquire</button>
+        </div>
+      </article>
+
+      <!-- vest10 -->
+      <article class="card" data-name="Vest 10"
+        data-images='[
+          "images/Collection/vests/vest10/1.png",
+          "images/Collection/vests/vest10/2.png",
+          "images/Collection/vests/vest10/3.png"
+        ]'>
+        <img class="img" src="images/Collection/vests/vest10/1.png" alt="Vest 10" loading="lazy" />
+        <div class="meta">
+          <strong>Vest 10</strong><br />
+          <button class="price inquire" type="button" data-product="Vest 10">Inquire</button>
+        </div>
+      </article>
+
+      <!-- vest11 -->
+      <article class="card" data-name="Vest 11"
+        data-images='[
+          "images/Collection/vests/vest11/1.png",
+          "images/Collection/vests/vest11/2.png",
+          "images/Collection/vests/vest11/3.png"
+        ]'>
+        <img class="img" src="images/Collection/vests/vest11/1.png" alt="Vest 11" loading="lazy" />
+        <div class="meta">
+          <strong>Vest 11</strong><br />
+          <button class="price inquire" type="button" data-product="Vest 11">Inquire</button>
+        </div>
+      </article>
+
+      <!-- vest12 -->
+      <article class="card" data-name="Vest 12"
+        data-images='[
+          "images/Collection/vests/vest12/1.png",
+          "images/Collection/vests/vest12/2.png",
+          "images/Collection/vests/vest12/3.png"
+        ]'>
+        <img class="img" src="images/Collection/vests/vest12/1.png" alt="Vest 12" loading="lazy" />
+        <div class="meta">
+          <strong>Vest 12</strong><br />
+          <button class="price inquire" type="button" data-product="Vest 12">Inquire</button>
+        </div>
+      </article>
 
     </div>
   </section>
@@ -504,6 +680,21 @@
     return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   }
 
+  // reset horizontal scroll when jumping to anchors (fixes "first card missing" on mobile)
+  function resetRowToStart(sectionId) {
+    const grid = document.querySelector(`${sectionId} .grid`);
+    if (grid) grid.scrollLeft = 0;
+  }
+
+  window.addEventListener('hashchange', () => {
+    if (location.hash === '#collection' || location.hash === '#dresses') resetRowToStart('#collection');
+    if (location.hash === '#vests') resetRowToStart('#vests') /* this is an h2 id, section is next */;
+  });
+
+  window.addEventListener('load', () => {
+    if (location.hash === '#collection' || location.hash === '#dresses') resetRowToStart('#collection');
+  });
+
   // ---------- Image fallback ----------
   document.querySelectorAll('img.img').forEach(img => {
     img.addEventListener('error', () => {
@@ -528,7 +719,6 @@
   let idx = 0;
   let caption = '';
 
-  // load image only if it exists; otherwise skip it
   function exists(src) {
     return new Promise(resolve => {
       const im = new Image();
@@ -564,10 +754,7 @@
     caption = capText || '';
     idx = Math.max(0, startIndex || 0);
 
-    // keep only images that actually exist (handles cases where only 1.png exists)
     gallery = await buildExistingGallery(images);
-
-    // fallback: if nothing exists for some reason, close
     if (!gallery.length) return;
 
     idx = Math.min(idx, gallery.length - 1);
@@ -603,12 +790,9 @@
   btnPrev.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
   btnNext.addEventListener('click', (e) => { e.stopPropagation(); next(); });
 
-  // click overlay closes
   lightbox.addEventListener('click', () => closeLightbox());
-  // click image does not close
   lightboxImg.addEventListener('click', (e) => e.stopPropagation());
 
-  // keyboard
   document.addEventListener('keydown', (e) => {
     if (lightbox.getAttribute('aria-hidden') !== 'false') return;
     if (e.key === 'Escape') closeLightbox();
@@ -616,7 +800,6 @@
     if (e.key === 'ArrowRight') next();
   });
 
-  // swipe (mobile)
   let touchX = null;
   lightbox.addEventListener('touchstart', (e) => {
     touchX = e.touches[0].clientX;
@@ -634,8 +817,8 @@
     }
   }, { passive: true });
 
-  // Open gallery when clicking card image
-  document.querySelectorAll('#collection .card').forEach(card => {
+  // Open gallery when clicking card image (both Dresses + Vests)
+  document.querySelectorAll('.card').forEach(card => {
     const img = card.querySelector('img.img');
     if (!img) return;
 
@@ -644,11 +827,8 @@
       e.stopPropagation();
 
       let images = [];
-      try {
-        images = JSON.parse(card.getAttribute('data-images') || '[]');
-      } catch {}
+      try { images = JSON.parse(card.getAttribute('data-images') || '[]'); } catch {}
 
-      // fallback: open just the visible image
       if (!images.length) images = [img.src];
 
       const name = card.getAttribute('data-name') || img.alt || 'Item';
@@ -656,7 +836,7 @@
     });
   });
 
-  // Hero zoom (single image)
+  // Hero zoom
   const hero = document.querySelector('.heroMedia');
   if (hero) {
     hero.addEventListener('click', async (e) => {
