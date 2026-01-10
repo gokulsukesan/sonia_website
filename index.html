@@ -14,14 +14,14 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="S&amp;S Kurd Legacy | Luxury Garments" />
   <meta property="og:description" content="Luxury garments — curated collection and custom pieces." />
-  <meta property="og:image" content="images/hero.png" />
+  <meta property="og:image" content="images/Hero/hero.png" />
   <meta property="og:locale" content="en_CA" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="S&amp;S Kurd Legacy | Luxury Garments" />
   <meta name="twitter:description" content="Luxury garments — curated collection and custom pieces." />
-  <meta name="twitter:image" content="images/hero.png" />
+  <meta name="twitter:image" content="images/Hero/hero.png" />
 
   <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,8 +62,7 @@
 
     *{box-sizing:border-box}
     html,body{height:100%}
-
-    html { scroll-behavior: smooth; }
+    html{scroll-behavior:smooth}
 
     body{
       margin:0;
@@ -159,7 +158,7 @@
       min-height: 220px;
       background:
         linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.45)),
-        url("images/hero.png");
+        url("images/Hero/hero.png");
       background-size: cover;
       background-position: center;
       border-top:1px solid rgba(255,255,255,.06);
@@ -179,7 +178,8 @@
       border:1px solid rgba(255,255,255,.08);
       background:#15151c;
     }
-    
+
+    /* Mobile horizontal scroll for collection */
     @media (max-width: 759px) {
       #collection .grid {
         display: grid;
@@ -189,10 +189,10 @@
         overflow-y: hidden;
         gap: 14px;
         padding-bottom: 10px;
-        
+
         padding-left: 6px;
         padding-right: 6px;
-        
+
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
       }
@@ -201,19 +201,19 @@
         content:"";
         width: 6px;
       }
-    
+
       #collection .card {
         scroll-snap-align: start;
       }
-    
+
       #collection .grid::-webkit-scrollbar {
         display: none;
       }
-    
       #collection .grid {
         scrollbar-width: none;
       }
     }
+
     .img{
       width:100%;
       aspect-ratio:4/5;
@@ -246,15 +246,6 @@
       font-family:inherit;
     }
     .price.inquire:hover{ text-decoration: underline; }
-
-    /* CONTACT */
-    .contactRow{
-      margin-top:12px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
 
     /* Brand typography */
     .brand .name,
@@ -314,17 +305,13 @@
       gap: 12px;
       align-items: center;
     }
-
     .contact-icons-min svg {
       width: 22px;
       height: 22px;
       stroke-width: 1.6;
       display: block;
     }
-
-    .contact-icons-min a {
-      line-height: 0;
-    }
+    .contact-icons-min a { line-height: 0; }
 
     .social-3d {
       width: 22px;
@@ -332,7 +319,6 @@
       transition: transform 0.2s ease, filter 0.2s ease;
       display: block;
     }
-
     .social-3d:hover {
       transform: scale(1.12);
       filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
@@ -344,7 +330,8 @@
 <header class="topbar">
   <div class="inner">
     <div class="brand">
-      <img src="images/Sonia_Icon.png" alt="S&amp;S Kurd Legacy logo" />
+      <!-- MOVED: images/Icon/ -->
+      <img src="images/Icon/Sonia_Icon.png" alt="S&amp;S Kurd Legacy logo" />
       <div>
         <div class="name">S&amp;S Kurd Legacy</div>
         <div class="tag">Luxury garments • Shahla Sonia</div>
@@ -380,7 +367,7 @@
           class="heroMedia"
           role="img"
           aria-label="Hero lookbook image"
-          data-full="images/hero.png"
+          data-full="images/Hero/hero.png"
           title="Click to zoom"
         ></div>
       </div>
@@ -441,8 +428,9 @@
          target="_blank"
          rel="noopener"
          aria-label="Instagram">
+        <!-- MOVED: images/Logo/ -->
         <img
-          src="images/insta-3d.png"
+          src="images/Logo/insta-3d.png"
           alt="Instagram"
           class="social-3d"
         />
@@ -452,8 +440,9 @@
          target="_blank"
          rel="noopener"
          aria-label="WhatsApp">
+        <!-- MOVED: images/Logo/ -->
         <img
-          src="images/whatsapp-3d.png"
+          src="images/Logo/whatsapp-3d.png"
           alt="WhatsApp"
           class="social-3d"
         />
@@ -472,6 +461,9 @@
   function isMobile() {
     return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   }
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
 
   function openLightbox(src, alt) {
     if (!src) return;
@@ -510,9 +502,6 @@
   });
 
   // ---------- Lightbox zoom (products) ----------
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-
   document.querySelectorAll('.card img.img').forEach(img => {
     img.addEventListener('click', (e) => {
       e.preventDefault();
