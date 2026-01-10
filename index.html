@@ -165,10 +165,8 @@
       }
       .section .grid::after{ content:""; width:6px; }
       .section .card{ scroll-snap-align: start; }
-
-      /* iOS paint nudge (safe) */
-      .section .card { transform: translateZ(0); }
-
+      /* iOS paint nudge */
+      .section .card{ transform: translateZ(0); }
       .section .grid::-webkit-scrollbar{ display:none; }
       .section .grid{ scrollbar-width:none; }
     }
@@ -355,6 +353,12 @@
   <section id="collection" class="section">
     <h2 id="dresses">Dresses</h2>
     <div class="grid">
+      <!-- Dress 0 (NEW) -->
+      <article class="card" data-name="Dress 0" data-images='["images/Collection/dresses/dress0/1.png","images/Collection/dresses/dress0/2.png","images/Collection/dresses/dress0/3.png"]'>
+        <img class="img" src="images/Collection/dresses/dress0/1.png" alt="Dress 0" />
+        <div class="meta"><strong>Dress 0</strong><br /><button class="price inquire" type="button" data-product="Dress 0">Inquire</button></div>
+      </article>
+
       <article class="card" data-name="Dress 1" data-images='["images/Collection/dresses/dress1/1.png","images/Collection/dresses/dress1/2.png","images/Collection/dresses/dress1/3.png"]'>
         <img class="img" src="images/Collection/dresses/dress1/1.png" alt="Dress 1" />
         <div class="meta"><strong>Dress 1</strong><br /><button class="price inquire" type="button" data-product="Dress 1">Inquire</button></div>
@@ -391,6 +395,12 @@
   <section id="vests" class="section">
     <h2>Vests</h2>
     <div class="grid">
+      <!-- Vest 0 (NEW) -->
+      <article class="card" data-name="Vest 0" data-images='["images/Collection/vests/vest0/1.png","images/Collection/vests/vest0/2.png","images/Collection/vests/vest0/3.png"]'>
+        <img class="img" src="images/Collection/vests/vest0/1.png" alt="Vest 0" />
+        <div class="meta"><strong>Vest 0</strong><br /><button class="price inquire" type="button" data-product="Vest 0">Inquire</button></div>
+      </article>
+
       <article class="card" data-name="Vest 1" data-images='["images/Collection/vests/vest1/1.png","images/Collection/vests/vest1/2.png","images/Collection/vests/vest1/3.png"]'>
         <img class="img" src="images/Collection/vests/vest1/1.png" alt="Vest 1" />
         <div class="meta"><strong>Vest 1</strong><br /><button class="price inquire" type="button" data-product="Vest 1">Inquire</button></div>
