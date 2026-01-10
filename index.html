@@ -7,41 +7,9 @@
   <meta name="description" content="S&amp;S Kurd Legacy — luxury garments. Browse our curated collection." />
   <meta name="theme-color" content="#0b0b0e" />
 
-  <!-- Canonical (update to your real domain once you have one) -->
-  <link rel="canonical" href="https://example.pages.dev/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="S&amp;S Kurd Legacy | Luxury Garments" />
-  <meta property="og:description" content="Luxury garments — curated collection and custom pieces." />
-  <meta property="og:image" content="images/Hero/hero.png" />
-  <meta property="og:locale" content="en_CA" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="S&amp;S Kurd Legacy | Luxury Garments" />
-  <meta name="twitter:description" content="Luxury garments — curated collection and custom pieces." />
-  <meta name="twitter:image" content="images/Hero/hero.png" />
-
-  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Basic JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "S&S Kurd Legacy",
-    "description": "Luxury garments — curated collection and custom pieces.",
-    "areaServed": "North York, Toronto, Canada",
-    "sameAs": [
-      "https://www.instagram.com/imperial.kurd.maison"
-    ],
-    "email": "soniaebrahimi88@icloud.com"
-  }
-  </script>
 
   <style>
     :root{
@@ -52,7 +20,6 @@
       --muted:#c9c1ae;
       --gold:#caa25a;
       --gold2:#f0d49a;
-      --border:rgba(202,162,90,.22);
       --shadow: 0 14px 40px rgba(0,0,0,.55);
       --r:18px;
 
@@ -179,9 +146,9 @@
       background:#15151c;
     }
 
-    /* Mobile horizontal scroll for collection */
+    /* Mobile horizontal scroll (applies to any section with .grid inside it) */
     @media (max-width: 759px) {
-      #collection .grid {
+      .section .grid {
         display: grid;
         grid-auto-flow: column;
         grid-auto-columns: 85%;
@@ -197,21 +164,17 @@
         -webkit-overflow-scrolling: touch;
       }
 
-      #collection .grid::after{
+      .section .grid::after{
         content:"";
         width: 6px;
       }
 
-      #collection .card {
+      .section .card {
         scroll-snap-align: start;
       }
 
-      #collection .grid::-webkit-scrollbar {
-        display: none;
-      }
-      #collection .grid {
-        scrollbar-width: none;
-      }
+      .section .grid::-webkit-scrollbar { display: none; }
+      .section .grid { scrollbar-width: none; }
     }
 
     .img{
@@ -265,7 +228,7 @@
       font-family: var(--brand-font);
     }
 
-    /* Fullscreen image lightbox */
+    /* Gallery Lightbox */
     #lightbox {
       position: fixed;
       inset: 0;
@@ -274,18 +237,51 @@
       align-items: center;
       justify-content: center;
       z-index: 100;
-      cursor: zoom-out;
       padding: 18px;
     }
     #lightbox[aria-hidden="false"] { display: flex; }
+
+    .lb-figure{
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+      max-width:95vw;
+    }
     #lightbox img {
       max-width: 95vw;
-      max-height: 95vh;
+      max-height: 82vh;
       object-fit: contain;
       box-shadow: 0 20px 60px rgba(0,0,0,.6);
       border-radius: 6px;
       cursor: default;
     }
+    #lightbox-cap{
+      color: rgba(244,241,232,.75);
+      font-size: 13px;
+      letter-spacing: .06em;
+      text-align:center;
+      max-width: 80ch;
+    }
+
+    .lb-btn{
+      position:absolute;
+      border:1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.06);
+      color: rgba(244,241,232,.95);
+      width:44px;
+      height:44px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      user-select:none;
+    }
+    .lb-close{ top:16px; right:16px; font-size:18px; }
+    .lb-prev{ left:12px; top:50%; transform:translateY(-50%); font-size:28px; }
+    .lb-next{ right:12px; top:50%; transform:translateY(-50%); font-size:28px; }
 
     @media (min-width:760px){
       nav{display:flex}
@@ -299,7 +295,7 @@
       }
     }
 
-    /* Minimal contact icons – isolated */
+    /* Contact icons */
     .contact-icons-min {
       display: inline-flex;
       gap: 12px;
@@ -330,7 +326,6 @@
 <header class="topbar">
   <div class="inner">
     <div class="brand">
-      <!-- MOVED: images/Icon/ -->
       <img src="images/Icon/Sonia_Icon.png" alt="S&amp;S Kurd Legacy logo" />
       <div>
         <div class="name">S&amp;S Kurd Legacy</div>
@@ -374,41 +369,90 @@
     </div>
   </section>
 
-  <!-- COLLECTION -->
+  <!-- COLLECTION: DRESSES -->
   <section id="collection" class="section">
-    <h2>Collection</h2>
+    <h2>Dresses</h2>
     <div class="grid">
-      <article class="card">
-        <img class="img" src="images/p1.png" alt="Decorative Panel Dress" loading="lazy" />
+
+      <!-- You can rename the display name later; folder stays dress1 -->
+      <article class="card" data-name="Dress 1"
+        data-images='[
+          "images/Collection/dresses/dress1/1.png",
+          "images/Collection/dresses/dress1/2.png",
+          "images/Collection/dresses/dress1/3.png"
+        ]'>
+        <img class="img" src="images/Collection/dresses/dress1/1.png" alt="Dress 1" loading="lazy" />
         <div class="meta">
-          <strong>Decorative Panel Dress</strong><br />
-          <button class="price inquire" type="button" data-product="Decorative Panel Dress">Inquire</button>
+          <strong>Dress 1</strong><br />
+          <button class="price inquire" type="button" data-product="Dress 1">Inquire</button>
         </div>
       </article>
 
-      <article class="card">
-        <img class="img" src="images/p2.png" alt="Gold and Black Full-Length Dress" loading="lazy" />
+      <article class="card" data-name="Dress 2"
+        data-images='[
+          "images/Collection/dresses/dress2/1.png",
+          "images/Collection/dresses/dress2/2.png",
+          "images/Collection/dresses/dress2/3.png"
+        ]'>
+        <img class="img" src="images/Collection/dresses/dress2/1.png" alt="Dress 2" loading="lazy" />
         <div class="meta">
-          <strong>Gold and Black Full-Length Dress</strong><br />
-          <button class="price inquire" type="button" data-product="Gold and Black Full-Length Dress">Inquire</button>
+          <strong>Dress 2</strong><br />
+          <button class="price inquire" type="button" data-product="Dress 2">Inquire</button>
         </div>
       </article>
 
-      <article class="card">
-        <img class="img" src="images/p3.png" alt="Signature Abaya" loading="lazy" />
+      <article class="card" data-name="Dress 3"
+        data-images='[
+          "images/Collection/dresses/dress3/1.png",
+          "images/Collection/dresses/dress3/2.png",
+          "images/Collection/dresses/dress3/3.png"
+        ]'>
+        <img class="img" src="images/Collection/dresses/dress3/1.png" alt="Dress 3" loading="lazy" />
         <div class="meta">
-          <strong>Signature Abaya</strong><br />
-          <button class="price inquire" type="button" data-product="Signature Abaya">Inquire</button>
+          <strong>Dress 3</strong><br />
+          <button class="price inquire" type="button" data-product="Dress 3">Inquire</button>
         </div>
       </article>
 
-      <article class="card">
-        <img class="img" src="images/p4.png" alt="White Embellished Long Dress" loading="lazy" />
+      <article class="card" data-name="Dress 4"
+        data-images='[
+          "images/Collection/dresses/dress4/1.png",
+          "images/Collection/dresses/dress4/2.png",
+          "images/Collection/dresses/dress4/3.png"
+        ]'>
+        <img class="img" src="images/Collection/dresses/dress4/1.png" alt="Dress 4" loading="lazy" />
         <div class="meta">
-          <strong>White Embellished Long Dress</strong><br />
-          <button class="price inquire" type="button" data-product="White Embellished Long Dress">Inquire</button>
+          <strong>Dress 4</strong><br />
+          <button class="price inquire" type="button" data-product="Dress 4">Inquire</button>
         </div>
       </article>
+
+      <article class="card" data-name="Dress 5"
+        data-images='[
+          "images/Collection/dresses/dress5/1.png",
+          "images/Collection/dresses/dress5/2.png",
+          "images/Collection/dresses/dress5/3.png"
+        ]'>
+        <img class="img" src="images/Collection/dresses/dress5/1.png" alt="Dress 5" loading="lazy" />
+        <div class="meta">
+          <strong>Dress 5</strong><br />
+          <button class="price inquire" type="button" data-product="Dress 5">Inquire</button>
+        </div>
+      </article>
+
+      <article class="card" data-name="Dress 6"
+        data-images='[
+          "images/Collection/dresses/dress6/1.png",
+          "images/Collection/dresses/dress6/2.png",
+          "images/Collection/dresses/dress6/3.png"
+        ]'>
+        <img class="img" src="images/Collection/dresses/dress6/1.png" alt="Dress 6" loading="lazy" />
+        <div class="meta">
+          <strong>Dress 6</strong><br />
+          <button class="price inquire" type="button" data-product="Dress 6">Inquire</button>
+        </div>
+      </article>
+
     </div>
   </section>
 
@@ -428,66 +472,36 @@
          target="_blank"
          rel="noopener"
          aria-label="Instagram">
-        <!-- MOVED: images/Logo/ -->
-        <img
-          src="images/Logo/insta-3d.png"
-          alt="Instagram"
-          class="social-3d"
-        />
+        <img src="images/Logo/insta-3d.png" alt="Instagram" class="social-3d" />
       </a>
 
-      <a href="https://wa.me/14375338486?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20your%20collection."
+      <a href="https://wa.me/14375338486"
          target="_blank"
          rel="noopener"
          aria-label="WhatsApp">
-        <!-- MOVED: images/Logo/ -->
-        <img
-          src="images/Logo/whatsapp-3d.png"
-          alt="WhatsApp"
-          class="social-3d"
-        />
+        <img src="images/Logo/whatsapp-3d.png" alt="WhatsApp" class="social-3d" />
       </a>
     </div>
   </section>
 </main>
 
-<!-- Image Lightbox -->
+<!-- Gallery Lightbox -->
 <div id="lightbox" aria-hidden="true">
-  <img id="lightbox-img" alt="">
+  <button class="lb-btn lb-close" type="button" aria-label="Close">✕</button>
+  <button class="lb-btn lb-prev" type="button" aria-label="Previous image">‹</button>
+
+  <figure class="lb-figure">
+    <img id="lightbox-img" alt="">
+    <figcaption id="lightbox-cap"></figcaption>
+  </figure>
+
+  <button class="lb-btn lb-next" type="button" aria-label="Next image">›</button>
 </div>
 
 <script>
   // ---------- Helpers ----------
   function isMobile() {
     return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  }
-
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-
-  function openLightbox(src, alt) {
-    if (!src) return;
-    lightboxImg.src = src;
-    lightboxImg.alt = alt || '';
-    lightbox.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    lightbox.setAttribute('aria-hidden', 'true');
-    lightboxImg.src = '';
-    lightboxImg.alt = '';
-    document.body.style.overflow = '';
-  }
-
-  async function tryCopy(text) {
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text);
-        return true;
-      }
-    } catch {}
-    return false;
   }
 
   // ---------- Image fallback ----------
@@ -501,41 +515,162 @@
     }, { once: true });
   });
 
-  // ---------- Lightbox zoom (products) ----------
-  document.querySelectorAll('.card img.img').forEach(img => {
-    img.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      openLightbox(img.src, img.alt || '');
-    });
-  });
+  // ---------- Gallery Lightbox ----------
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCap = document.getElementById('lightbox-cap');
 
-  // ---------- Lightbox zoom (hero image) ----------
-  const hero = document.querySelector('.heroMedia');
-  if (hero) {
-    hero.addEventListener('click', (e) => {
-      e.preventDefault();
-      const src = hero.getAttribute('data-full');
-      openLightbox(src, 'Hero image');
+  const btnClose = lightbox.querySelector('.lb-close');
+  const btnPrev  = lightbox.querySelector('.lb-prev');
+  const btnNext  = lightbox.querySelector('.lb-next');
+
+  let gallery = [];
+  let idx = 0;
+  let caption = '';
+
+  // load image only if it exists; otherwise skip it
+  function exists(src) {
+    return new Promise(resolve => {
+      const im = new Image();
+      im.onload = () => resolve(true);
+      im.onerror = () => resolve(false);
+      im.src = src;
     });
   }
 
-  // Close lightbox when clicking the overlay (not the image)
+  async function buildExistingGallery(list) {
+    const out = [];
+    for (const src of list) {
+      // eslint-disable-next-line no-await-in-loop
+      if (await exists(src)) out.push(src);
+    }
+    return out;
+  }
+
+  function render() {
+    const src = gallery[idx];
+    if (!src) return;
+
+    lightboxImg.src = src;
+    lightboxImg.alt = caption ? `${caption} (${idx + 1}/${gallery.length})` : '';
+    lightboxCap.textContent = caption ? `${caption} — ${idx + 1}/${gallery.length}` : `${idx + 1}/${gallery.length}`;
+
+    const showArrows = gallery.length > 1;
+    btnPrev.style.display = showArrows ? 'flex' : 'none';
+    btnNext.style.display = showArrows ? 'flex' : 'none';
+  }
+
+  async function openLightbox(images, startIndex, capText) {
+    caption = capText || '';
+    idx = Math.max(0, startIndex || 0);
+
+    // keep only images that actually exist (handles cases where only 1.png exists)
+    gallery = await buildExistingGallery(images);
+
+    // fallback: if nothing exists for some reason, close
+    if (!gallery.length) return;
+
+    idx = Math.min(idx, gallery.length - 1);
+    render();
+
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImg.src = '';
+    lightboxImg.alt = '';
+    lightboxCap.textContent = '';
+    document.body.style.overflow = '';
+    gallery = [];
+    idx = 0;
+  }
+
+  function prev() {
+    if (gallery.length < 2) return;
+    idx = (idx - 1 + gallery.length) % gallery.length;
+    render();
+  }
+
+  function next() {
+    if (gallery.length < 2) return;
+    idx = (idx + 1) % gallery.length;
+    render();
+  }
+
+  btnClose.addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+  btnPrev.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+  btnNext.addEventListener('click', (e) => { e.stopPropagation(); next(); });
+
+  // click overlay closes
   lightbox.addEventListener('click', () => closeLightbox());
+  // click image does not close
   lightboxImg.addEventListener('click', (e) => e.stopPropagation());
 
-  // Close on ESC key (only when open)
+  // keyboard
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.getAttribute('aria-hidden') === 'false') {
-      closeLightbox();
-    }
+    if (lightbox.getAttribute('aria-hidden') !== 'false') return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
   });
 
-  // ---------- Inquire: open WhatsApp with prefilled message ----------
-  const WA_NUMBER = "14375338486"; // 1 + area code + number, no + sign
+  // swipe (mobile)
+  let touchX = null;
+  lightbox.addEventListener('touchstart', (e) => {
+    touchX = e.touches[0].clientX;
+  }, { passive: true });
 
+  lightbox.addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const endX = e.changedTouches[0].clientX;
+    const dx = endX - touchX;
+    touchX = null;
+
+    if (Math.abs(dx) > 40) {
+      if (dx > 0) prev();
+      else next();
+    }
+  }, { passive: true });
+
+  // Open gallery when clicking card image
+  document.querySelectorAll('#collection .card').forEach(card => {
+    const img = card.querySelector('img.img');
+    if (!img) return;
+
+    img.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      let images = [];
+      try {
+        images = JSON.parse(card.getAttribute('data-images') || '[]');
+      } catch {}
+
+      // fallback: open just the visible image
+      if (!images.length) images = [img.src];
+
+      const name = card.getAttribute('data-name') || img.alt || 'Item';
+      await openLightbox(images, 0, name);
+    });
+  });
+
+  // Hero zoom (single image)
+  const hero = document.querySelector('.heroMedia');
+  if (hero) {
+    hero.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const src = hero.getAttribute('data-full');
+      if (!src) return;
+      await openLightbox([src], 0, 'Hero image');
+    });
+  }
+
+  // ---------- Inquire: WhatsApp prefilled ----------
+  const WA_NUMBER = "14375338486";
   document.querySelectorAll('.price.inquire').forEach(btn => {
-    btn.addEventListener('click', async (e) => {
+    btn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
 
@@ -547,17 +682,9 @@ Could you please let me know the price, available sizes, and delivery options?
 
 Thank you.`;
 
-      // Optional: copy (best-effort; do not block the flow)
-      tryCopy(msg);
-
       const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
-
-      // More reliable on mobile: navigate instead of popup
-      if (isMobile()) {
-        window.location.href = waUrl;
-      } else {
-        window.open(waUrl, "_blank", "noopener");
-      }
+      if (isMobile()) window.location.href = waUrl;
+      else window.open(waUrl, "_blank", "noopener");
     });
   });
 </script>
